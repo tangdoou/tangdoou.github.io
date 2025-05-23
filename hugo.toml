@@ -1,0 +1,55 @@
+baseURL = "https://your-username.github.io/"
+languageCode = "zh-cn"
+title = "我的简洁博客"
+theme = "paper"
+
+# 可选的评论系统 (先都注释掉，以后再配置)
+# [services.disqus]
+#   shortname = 'YOUR_DISQUS_SHORTNAME'
+#
+# [params.giscus]
+#   repo = 'YourGitHubUsername/your-repo-name'
+#   repoId = 'YOUR_GISCUS_REPO_ID'
+#   category = 'YOUR_GISCUS_CATEGORY'
+#   categoryId = 'YOUR_GISCUS_CATEGORY_ID'
+#   mapping = 'pathname'
+#   theme = 'light'
+#   lang = 'zh-CN'
+
+[params]
+  color = 'linen'                           # 主题颜色："linen", "wheat", "gray", "light"
+
+  name = '你的名字'                         # 在主页显示
+  bio = '关于这个博客的简介...'               # 在主页显示
+  avatar = '你的Gravatar邮箱或/images/avatar.png' # 头像
+
+  # 社交链接 (只保留你有的，并填入你的 ID)
+  github = '你的GitHub用户名'
+  # twitter = '你的Twitter用户名'
+  rss = true
+
+  # 其他参数 (使用默认值通常没问题)
+  # math = false
+  # disableHLJS = false
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 30
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 40
