@@ -1,6 +1,6 @@
 baseURL = "https://tangdoou.github.io/"
 languageCode = "zh-cn"
-title = "我的简洁博客"
+title = "唐豆的秘密基地"
 theme = "paper"
 
 # 可选的评论系统 (先都注释掉，以后再配置)
@@ -19,9 +19,9 @@ theme = "paper"
 [params]
   color = 'linen'                           # 主题颜色："linen", "wheat", "gray", "light"
 
-  name = '你的名字'                         # 在主页显示
-  bio = '关于这个博客的简介...'               # 在主页显示
-  avatar = '你的Gravatar邮箱或/images/avatar.png' # 头像
+  name = '唐豆'                         # 在主页显示
+  bio = '喵喵喵'               # 在主页显示
+  avatar = '/images/touxiang.png' # 头像
 
   # 社交链接 (只保留你有的，并填入你的 ID)
   github = '你的GitHub用户名'
