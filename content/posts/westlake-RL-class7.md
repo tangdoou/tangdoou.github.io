@@ -423,11 +423,11 @@ $$
 
 | 算法 (Algorithm)          | TD 目标 $\bar{q}_t$ 的表达式                                                                                                              |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| Sarsa                     | $\bar{q}_t = r_{t+1} + \gamma q_t(s_{t+1}, a_{t+1})$                                                                                      |
-| Expected Sarsa            | $\bar{q}_t = r_{t+1} + \gamma \sum_{a'} \pi(a' \mid s_{t+1}) q_t(s_{t+1}, a')$                                                             |
-| n-步 Sarsa (n-step Sarsa) | $\bar{q}_t = r_{t+1} + \gamma r_{t+2} + \cdots + \gamma^{n-1}r_{t+n} + \gamma^n q_t(s_{t+n}, a_{t+n})$                                     |
-| Q-学习 (Q-learning)       | $\bar{q}_t = r_{t+1} + \gamma \max_{a'} q_t(s_{t+1}, a')$                                                                                  |
-| 蒙特卡洛 (Monte Carlo)    | $\bar{q}_t = G_t = r_{t+1} + \gamma r_{t+2} + \cdots + \gamma^{T-t-1}r_T$（直到片段结束）<br>若设 $\alpha_t = 1$，则 $q_{t+1} = \bar{q}_t$ |
+| Sarsa                     | $\bar{q}\_t = r\_{t+1} + \gamma q\_t(s\_{t+1}, a\_{t+1})$                                                                                      |
+| Expected Sarsa            | $\bar{q}\_t = r\_{t+1} + \gamma \sum\_{a'} \pi(a' \mid s\_{t+1}) q_t(s_{t+1}, a')$                                                             |
+| n-步 Sarsa (n-step Sarsa) | $\bar{q}\_t = r\_{t+1} + \gamma r\_{t+2} + \cdots + \gamma^{n-1}r\_{t+n} + \gamma^n q\_t(s\_{t+n}, a\_{t+n})$                                     |
+| Q-学习 (Q-learning)       | $\bar{q}\_t = r\_{t+1} + \gamma \max\_{a'} q\_t(s\_{t+1}, a')$                                                                                  |
+| 蒙特卡洛 (Monte Carlo)    | $\bar{q}\_t = G\_t = r\_{t+1} + \gamma r\_{t+2} + \cdots + \gamma^{T-t-1}r\_T$（直到片段结束）<br>若设 $\alpha\_t = 1$，则 $q\_{t+1} = \bar{q}\_t$ |
 
 
 #### 统一的数学目标
