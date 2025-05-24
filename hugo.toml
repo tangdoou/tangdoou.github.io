@@ -37,7 +37,8 @@ minify = true # 默认开启，减小网站体积
   rss = true
 
   # 如果你的 "Paper" 主题支持 KaTeX 数学公式，可以通过类似参数开启
-  # math = false
+  math = true
+  localKatex = false
 
   # "Paper" 主题通常默认使用 Hugo 内置的 Chroma 进行语法高亮
   # 如果主题有特定设置，比如禁用内置高亮以使用 Prism.js，可能会有 disableHLJS = true 之类的参数
