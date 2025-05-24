@@ -11,13 +11,16 @@ summary: "西湖大学强化学习第六讲随机近似与随机梯度下降。"
 ShowToc: true
 TocOpen: false 
 ---
+
+
 ## **第六讲：随机近似与随机梯度下降 (Lecture 6: Stochastic Approximation and Stochastic Gradient Descent)**
 
 **主讲人：赵世钰 (Shiyu Zhao)**
 **机构：人工智能系, 西湖大学 (Department of Artificial Intelligence, Westlake University)**
 
 ---
-
+### 说在前边：本笔记由幻灯片，原视频字幕，唐豆的笔记合并起来由ai整合成，食用方法是配合视频对照来看，或者用来复习，效果极佳。
+---
 ### **课程大纲回顾 (Course Outline Review)**
 
 本次课程处于强化学习知识体系中的一个承上启下的位置：

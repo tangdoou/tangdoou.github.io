@@ -50,6 +50,15 @@
     <loc>http://localhost:1313/archives/</loc>
     <lastmod>2025-05-24T00:00:00+08:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2025-05-20T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/westlake-rl-class6/</loc>
+    <lastmod>2025-05-20T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/westlake-rl-class6-2/</loc>
+    <lastmod>2025-05-20T10:00:00+16:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/series/</loc>
   </url>
 </urlset>

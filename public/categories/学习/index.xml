@@ -15,5 +15,19 @@
       <guid>http://localhost:1313/posts/cross-entropy/</guid>
       <description>分类问题为毛使用交叉熵作为损失函数，交叉熵的推导。</description>
     </item>
+    <item>
+      <title>西湖大学 RL 第六课：随机近似与随机梯度下降</title>
+      <link>http://localhost:1313/posts/westlake-rl-class6/</link>
+      <pubDate>Tue, 20 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/westlake-rl-class6/</guid>
+      <description>西湖大学强化学习第六讲随机近似与随机梯度下降。</description>
+    </item>
+    <item>
+      <title>西湖大学 RL 第六课：随机近似与随机梯度下降 2</title>
+      <link>http://localhost:1313/posts/westlake-rl-class6-2/</link>
+      <pubDate>Tue, 20 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/westlake-rl-class6-2/</guid>
+      <description>西湖大学强化学习第六讲随机近似与随机梯度下降。</description>
+    </item>
   </channel>
 </rss>
