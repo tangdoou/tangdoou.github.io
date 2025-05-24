@@ -421,13 +421,14 @@ q\_{t+1}(s\_t, a\_t) = q\_t(s\_t, a\_t) - \alpha\_t(s\_t, a\_t) [q\_t(s\_t, a\_t
 $$
 其中 $\bar{q}\_t$ 是不同算法中定义的 **TD目标 (TD Target)**。
 
-| 算法 (Algorithm)         | TD目标 $\bar{q}\_t$ 的表达式                                                                               |
-| :----------------------- | :------------------------------------------------------------------------------------------------------ |
-| Sarsa                    | $r\_{t+1} + \gamma q\_t(s\_{t+1}, a\_{t+1})$                                                                  |
-| Expected Sarsa           | $r\_{t+1} + \gamma \sum\_{a'} \pi(a'|s\_{t+1}) q\_t(s\_{t+1}, a')$                                             |
-| n-步 Sarsa (n-step Sarsa) | $r\_{t+1} + \gamma r\_{t+2} + \dots + \gamma^{n-1}r\_{t+n} + \gamma^n q\_t(s\_{t+n}, a\_{t+n})$                   |
-| Q-学习 (Q-learning)      | $r\_{t+1} + \gamma \max\_{a'} q\_t(s\_{t+1}, a')$                                                              |
-| 蒙特卡洛 (Monte Carlo)   | $G\_t = r\_{t+1} + \gamma r\_{t+2} + \dots + \gamma^{T-t-1}r\_T$ (直到片段结束) (若设 $\alpha\_t=1$, 则 $q\_{t+1}=\bar{q}\_t$) |
+| 算法 (Algorithm)          | TD 目标 $\bar{q}_t$ 的表达式                                                                                                              |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| Sarsa                     | $\bar{q}_t = r_{t+1} + \gamma q_t(s_{t+1}, a_{t+1})$                                                                                      |
+| Expected Sarsa            | $\bar{q}_t = r_{t+1} + \gamma \sum_{a'} \pi(a' \mid s_{t+1}) q_t(s_{t+1}, a')$                                                             |
+| n-步 Sarsa (n-step Sarsa) | $\bar{q}_t = r_{t+1} + \gamma r_{t+2} + \cdots + \gamma^{n-1}r_{t+n} + \gamma^n q_t(s_{t+n}, a_{t+n})$                                     |
+| Q-学习 (Q-learning)       | $\bar{q}_t = r_{t+1} + \gamma \max_{a'} q_t(s_{t+1}, a')$                                                                                  |
+| 蒙特卡洛 (Monte Carlo)    | $\bar{q}_t = G_t = r_{t+1} + \gamma r_{t+2} + \cdots + \gamma^{T-t-1}r_T$（直到片段结束）<br>若设 $\alpha_t = 1$，则 $q_{t+1} = \bar{q}_t$ |
+
 
 #### 统一的数学目标
 
@@ -438,7 +439,7 @@ $$
 | Sarsa                    | $q_{\pi}(s,a) = \mathbb{E}[R_{t+1} + \gamma q_{\pi}(S_{t+1}, A_{t+1}) \mid S_t=s, A_t=a]$                                          | $S_t=s, A_t=a$         | BE                        |
 | Expected Sarsa           | $q_{\pi}(s,a) = \mathbb{E}\left[R_{t+1} + \gamma \sum_{a'} \pi(a' \mid S_{t+1}) q_{\pi}(S_{t+1}, a') \mid S_t=s, A_t=a\right]$       | $S_t=s, A_t=a$         | BE                        |
 | n-步 Sarsa (n-step Sarsa) | $q_{\pi}(s,a) = \mathbb{E}[R_{t+1} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n q_{\pi}(S_{t+n}, A_{t+n}) \mid S_t=s, A_t=a]$          | $S_t=s, A_t=a$         | BE                        |
-| Q-学习 (Q-learning)       | $q_*(s,a) = \mathbb{E}[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') \mid S_t=s, A_t=a]$                                              | $S_t=s, A_t=a$         | BOE                       |
+| Q-学习 (Q-learning)       | $q\_\*(s,a) = \mathbb{E}[R_{t+1} + \gamma \max_{a'} q_\*(S_{t+1}, a') \mid S_t=s, A_t=a]$                                              | $S_t=s, A_t=a$         | BOE                       |
 | 蒙特卡洛 (Monte Carlo)     | $q_{\pi}(s,a) = \mathbb{E}[G_t \mid S_t=s, A_t=a]$                                                                                  | $S_t=s, A_t=a$         | BE（定义）               |
 
 
