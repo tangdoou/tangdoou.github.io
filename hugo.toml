@@ -1,85 +1,49 @@
 baseURL = "https://tangdoou.github.io/"
 languageCode = "zh-cn"
 title = "唐豆的秘密基地"
-theme = "PaperMod" # 请确保这里是你主题文件夹的正确名称，通常是 "PaperMod"
+theme = "paper" # <--- 修正为你的主题文件夹名称 "paper"
 
-paginate = 5 # 每页文章数，可按需调整
+# 分页配置 (修正后的格式)
+[pagination]
+  pagerSize = 5
 
 enableRobotsTXT = true
 buildDrafts = false # 部署时设为 false，本地预览时可设为 true (或使用 hugo server -D)
 buildFuture = false
 buildExpired = false
 
-# 如果你的仓库是公开的，可以开启这个，方便别人提修改建议
-# googleAnalytics = "UA-123-45" # 替换为你的 Google Analytics ID (可选)
-
 minify = true # 默认开启，减小网站体积
 
-# PaperMod 特有的参数配置
+# "Paper" 主题的参数配置
+# 注意：这里的很多参数与 "PaperMod" 不同
 [params]
-  env = "production" # 设置为 "production" 以启用增强的SEO等特性
-  description = "唐豆的个人博客和秘密基地" # 网站描述
-  author = ["唐豆"] # 全局作者名
+  # "Paper" 主题的颜色方案 (例如: linen, wheat, gray, light)
+  # 如果你之前有 color = 'linen'，可以保留或选择其他
+  color = "linen"
 
-  defaultTheme = "auto" # 可选值: "light", "dark", "auto" (根据系统切换)
-  disableThemeToggle = false # false 则显示主题切换按钮
+  # 用于主页显示的头像、名字和简介 (这些是 "Paper" 主题常用的参数)
+  avatar = "images/touxiang.png"    # 确保图片在 static/images/touxiang.png
+  name = "唐豆"
+  bio = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ" # 你可以自定义这里的简介
 
-  ShowReadingTime = true # 显示文章阅读时间
-  ShowShareButtons = true # 显示分享按钮
-  ShowPostNavLinks = true # 显示上一篇/下一篇导航
-  ShowBreadCrumbs = true # 显示面包屑导航
-  ShowCodeCopyButtons = true # 显示代码块复制按钮
-  ShowWordCount = true # 显示字数
-  ShowRssButtonInSectionTermList = true # 在分类/标签列表页显示RSS按钮
-  UseHugoToc = true # 使用Hugo内置的ToC生成
-  disableSpecial1stPost = false # 如果为true，首页文章列表的第一个帖子不会有特殊格式
-  disableScrollToTop = false # false 则显示返回顶部按钮
-  comments = false # 暂时关闭评论，之后可以配置
-  # hidemeta = false # 是否隐藏文章元数据（日期、阅读时间等）
-  # hideSummary = false # 是否在列表页隐藏文章摘要
+  # "Paper" 主题的社交链接格式 (直接用键值对)
+  github = "tangdoou"                 # 你的 GitHub 用户名
+  twitter = "ipowonder"               # 你的 Twitter 用户名或 Handle
+  email = "tangdoou@outlook.com"    # 你的 Email
+  steam = "76561199380659766"       # 你的 Steam ID64
+  wechat = "tange-1234"               # 你的微信号 (主题可能会显示ID或提供某种方式)
 
-  # 主页配置 (Profile Mode)
-  profileMode.enabled = true
-  profileMode.title = "唐豆的秘密基地" # 可选，默认为 site.Title
-  profileMode.subtitle = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ"
-  profileMode.imageUrl = "images/touxiang.png" # 确保图片放在 static/images/touxiang.png
-  profileMode.imageTitle = "唐豆的头像" # 图片的 alt 文本
-  profileMode.imageWidth = 150 # 自定义图片宽度
-  profileMode.imageHeight = 150 # 自定义图片高度
-  profileMode.buttons = [
-    { name = "文章", url = "/posts" },
-    { name = "归档", url = "/archives" },
-    # 你可以添加更多按钮，比如 "关于我"
-    # { name = "关于", url = "/about" }
-  ]
+  # 是否在页脚显示 RSS 订阅链接 (根据 "Paper" 主题的功能)
+  rss = true
 
-  # 社交链接
-  socialIcons = [
-    { name = "github", url = "https://github.com/tangdoou" }, # 你的 GitHub
-    { name = "twitter", url = "https://twitter.com/ipowonder" }, # 你的 Twitter
-    { name = "email", url = "mailto:tangdoou@outlook.com" }, # 你的 Email
-    { name = "steam", url = "https://steamcommunity.com/profiles/76561199380659766" }, # 你的 Steam
-    # 对于微信，由于通常不直接通过URL访问，并且图标可能不支持，
-    # 你也可以考虑在“关于”页面直接写出微信号。
-    # 如果想尝试图标链接，可以这样加 (可能没有专用图标):
-    # { name = "wechat", url = "#" }, # 或者留空URL，主要用于显示ID，但可能不理想
-    { name = "rss", url = "/index.xml" } # RSS 订阅
-  ]
+  # 如果你的 "Paper" 主题支持 KaTeX 数学公式，可以通过类似参数开启
+  # math = false
 
-  # 归档页面配置
-  # archivesCreateDate = "" # 可选，归档页创建日期
-  # archivesPageParams = { title = "文章归档", description = "所有文章都按时间顺序排列在这里" } # 可选，自定义归档页标题和描述
+  # "Paper" 主题通常默认使用 Hugo 内置的 Chroma 进行语法高亮
+  # 如果主题有特定设置，比如禁用内置高亮以使用 Prism.js，可能会有 disableHLJS = true 之类的参数
+  # 我们暂时不设置这个，让主题使用默认行为
 
-  # 如果你要启用文章编辑链接 (方便自己在 GitHub 上快速编辑)
-  # (注意：如果取消注释，这里的键也使用了正确的点表示法)
-  # editPost.URL = "https://github.com/tangdoou/tangdoou.github.io/tree/main/content" # 替换为你的仓库内容路径
-  # editPost.Text = "Suggest Changes" # 按钮文字
-  # editPost.appendFilePath = true # 追加文件路径到URL末尾
-
-  # SEO and Meta
-  # cover = { responsiveImages = false, linkFullImages = true } # 文章封面图相关设置
-
-# 导航菜单 (你已经配置得很好了)
+# 导航菜单 (这部分是 Hugo 标准配置，通常可以保持不变)
 [menu]
   [[menu.main]]
     identifier = "home"
@@ -92,58 +56,46 @@ minify = true # 默认开启，减小网站体积
     url = "/posts/"
     weight = 20
   [[menu.main]]
-    identifier = "archives" # 添加归档到菜单
+    identifier = "archives"
     name = "归档"
-    url = "/archives/"
+    url = "/archives/" # "Paper" 主题是否支持 /archives/ 这种归档页需要确认
+                     # PaperMod 需要特定 content/archives.md，"Paper" 可能不需要或有不同实现
     weight = 30
-  [[menu.main]]
-    identifier = "search" # 添加搜索到菜单
-    name = "搜索"
-    url = "/search/"
-    weight = 40
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 50
+    weight = 50 # 将“关于”调整到“标签”前
   [[menu.main]]
     identifier = "tags"
     name = "标签"
     url = "/tags/"
     weight = 60
+  # [[menu.main]]
+  #   identifier = "search" # <--- 注意：搜索功能对主题依赖很大
+  #   name = "搜索"
+  #   url = "/search/"    # "Paper" 主题可能没有内置此路径的搜索页面
+  #   weight = 40
 
-# 输出格式，为搜索功能启用 JSON
+# 输出格式
+# JSON 输出主要是为 PaperMod 的搜索功能服务的
+# "Paper" 主题可能不需要，我们先简化它，只保留 HTML 和 RSS
 [outputs]
-  home = ["HTML", "RSS", "JSON"] # 确保 JSON 在 home outputs 中
+  home = ["HTML", "RSS"]
 
-# 如果你的网站有多种语言 (目前是单语言，这部分可以忽略或后续添加)
-# [languages]
-#   [languages.zh-cn]
-#     languageName = "简体中文"
-#     weight = 1
-#     [languages.zh-cn.params] # 特定语言的参数可以覆盖全局参数
-#       displayName = "中"
-#       isoCode = "zh-CN"
-#       rtl = false
-#       [languages.zh-cn.homeInfoParams] # 如果使用 Home-Info Mode
-#         Title = "你好 👋"
-#         Content = "欢迎来到我的博客"
-
-# 语法高亮 (PaperMod 默认支持)
+# 语法高亮
 [markup]
   [markup.highlight]
-    # anchorLineNos = true
     codeFences = true
     guessSyntax = true
-    lineNos = true # 代码块显示行号
-    # noClasses = false
-    style = "dracula" # 你喜欢的高亮主题，例如: monokai, dracula, github, native 等
+    lineNos = true       # 代码块显示行号
+    style = "dracula"    # 这个高亮主题应该能继续工作
 
   [markup.goldmark.renderer]
-    unsafe = true # 允许 HTML 标签在 Markdown 中，如果你需要嵌入特定 HTML 代码
+    unsafe = true # 如果你需要在 Markdown 中使用原始 HTML
 
-# 分类法 (tags 和 categories 是 Hugo 默认的)
+# 分类法
 [taxonomies]
   category = "categories"
   tag = "tags"
-  series = "series" # 如果你想用系列文章功能
+  series = "series" # 如果你想使用系列文章功能
