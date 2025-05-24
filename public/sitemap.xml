@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-05-24T01:25:00+08:00</lastmod>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2025-05-24T11:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2025-05-24T01:25:00+08:00</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-05-24T11:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-05-24T01:25:00+08:00</lastmod>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/cross-entropy/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2025-05-24T10:00:00+16:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/hugo/</loc>
     <lastmod>2025-05-24T01:25:00+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</loc>
@@ -23,10 +41,15 @@
     <loc>http://localhost:1313/posts/my-first-note/</loc>
     <lastmod>2025-05-24T01:25:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-05-24T01:25:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2025-05-24T01:25:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/search/</loc>
+    <lastmod>2025-05-24T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/archives/</loc>
+    <lastmod>2025-05-24T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/</loc>
   </url>
 </urlset>

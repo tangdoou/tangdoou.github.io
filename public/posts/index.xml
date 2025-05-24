@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 我的简洁博客</title>
+    <title>Posts on 唐豆的秘密基地</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on 我的简洁博客</description>
+    <description>Recent content in Posts on 唐豆的秘密基地</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 May 2025 01:25:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 May 2025 10:00:00 +1600</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>交叉熵公式推导（为啥分类问题用交叉熵作为损失函数）</title>
+      <link>http://localhost:1313/posts/cross-entropy/</link>
+      <pubDate>Sat, 24 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/cross-entropy/</guid>
+      <description>分类问题为毛使用交叉熵作为损失函数，交叉熵的推导。</description>
+    </item>
     <item>
       <title>我的第一篇笔记</title>
       <link>http://localhost:1313/posts/my-first-note/</link>
       <pubDate>Sat, 24 May 2025 01:25:00 +0800</pubDate>
       <guid>http://localhost:1313/posts/my-first-note/</guid>
       <description>&lt;h2 id=&#34;你好hugo&#34;&gt;你好，Hugo！&lt;/h2&gt;&#xA;&lt;p&gt;这是我用 Hugo 和 Paper 主题写的第一篇笔记。&lt;/p&gt;&#xA;&lt;p&gt;感觉很棒！&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;列表项1&lt;/li&gt;&#xA;&lt;li&gt;列表项2&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>西湖大学 RL 第六课：随机近似与随机梯度下降</title>
+      <link>http://localhost:1313/posts/westlake-rl-class6/</link>
+      <pubDate>Tue, 20 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/westlake-rl-class6/</guid>
+      <description>西湖大学强化学习第六讲随机近似与随机梯度下降。</description>
+    </item>
+    <item>
+      <title>西湖大学 RL 第六课：随机近似与随机梯度下降 2</title>
+      <link>http://localhost:1313/posts/westlake-rl-class6-2/</link>
+      <pubDate>Tue, 20 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/westlake-rl-class6-2/</guid>
+      <description>西湖大学强化学习第六讲随机近似与随机梯度下降。</description>
     </item>
   </channel>
 </rss>

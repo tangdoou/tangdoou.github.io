@@ -20,7 +20,7 @@
   />
 
   
-  <title>我的第一篇笔记 - 我的简洁博客</title>
+  <title>我的第一篇笔记 - 唐豆的秘密基地</title>
 
   
   <meta name="theme-color" />
@@ -32,20 +32,51 @@
 列表项1
 列表项2
 " />
-  <meta name="author" content="你的名字" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <meta name="author" content="唐豆" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
 
   
   <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
 
-  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/2632751c2b9c0b37ce852ba7ff63b648?s=160&amp;d=identicon" />
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6148db2b53ac5cdd6cd6871aa50ecbd5?s=160&amp;d=identicon" />
 
-  <link rel="preload" as="image" href="http://localhost:1313/github.svg" /><link rel="preload" as="image" href="http://localhost:1313/rss.svg" />
+  <link rel="preload" as="image" href="http://localhost:1313/twitter.svg" /><link rel="preload" as="image" href="http://localhost:1313/github.svg" /><link rel="preload" as="image" href="http://localhost:1313/rss.svg" />
 
   <script
     defer
     src="http://localhost:1313/highlight.min.js"
     onload="hljs.initHighlightingOnLoad();"
-  ></script>
+  ></script><link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script><script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
 
   
   <link
@@ -68,7 +99,7 @@
     <a
       class="-translate-y-[1px] text-2xl font-medium"
       href="http://localhost:1313/"
-      >我的简洁博客</a
+      >唐豆的秘密基地</a
     >
     <div
       class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
@@ -140,6 +171,10 @@
         >文章</a
       ><a
         class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/posts/"
+        >归档</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/about/"
         >关于</a
       ><a
@@ -151,8 +186,15 @@
     >
       <a
         class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/ipowonder"
+        target="_blank"
+        rel="me"
+      >twitter</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./github.svg)"
-        href="https://github.com/%e4%bd%a0%e7%9a%84GitHub%e7%94%a8%e6%88%b7%e5%90%8d"
+        href="https://github.com/tangdoou"
         target="_blank"
         rel="me"
       >github</a>
@@ -193,11 +235,19 @@
       class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2"
       >博客</a
-    ></footer></article></main><footer
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/posts/cross-entropy/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>交叉熵公式推导（为啥分类问题用交叉熵作为损失函数）</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="http://localhost:1313/posts/westlake-rl-class6/"
+      ><span>西湖大学 RL 第六课：随机近似与随机梯度下降</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
   class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
   <div class="mr-auto">&copy;2025
-    <a class="link" href="http://localhost:1313/">我的简洁博客</a></div>
+    <a class="link" href="http://localhost:1313/">唐豆的秘密基地</a></div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
     >powered by hugo️️</a
   >️

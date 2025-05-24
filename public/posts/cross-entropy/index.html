@@ -1,0 +1,340 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>交叉熵公式推导（为啥分类问题用交叉熵作为损失函数） - 唐豆的秘密基地</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="分类问题为毛使用交叉熵作为损失函数，交叉熵的推导。" />
+  <meta name="author" content="唐豆" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6148db2b53ac5cdd6cd6871aa50ecbd5?s=160&amp;d=identicon" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/twitter.svg" /><link rel="preload" as="image" href="http://localhost:1313/github.svg" /><link rel="preload" as="image" href="http://localhost:1313/rss.svg" />
+
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script><link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script><script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.147.5">
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="http://localhost:1313/"
+      >唐豆的秘密基地</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/"
+        >首页</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/posts/"
+        >文章</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/posts/"
+        >归档</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >关于</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/tags/"
+        >标签</a
+      ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./twitter.svg)"
+        href="https://twitter.com/ipowonder"
+        target="_blank"
+        rel="me"
+      >twitter</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/tangdoou"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./rss.svg)"
+        href="http://localhost:1313/index.xml"
+        target="_blank"
+        rel="alternate"
+      >rss</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">交叉熵公式推导（为啥分类问题用交叉熵作为损失函数）</h1><div class="text-xs antialiased opacity-60"><time>May 24, 2025</time></div></header>
+
+  <section><h2 id="解密逻辑回归为什么我们选择交叉熵作为损失函数交叉熵是怎么来的">解密逻辑回归：为什么我们选择交叉熵作为损失函数，交叉熵是怎么来的？</h2>
+<p>很多初学者在学习机器学习，特别是分类问题时，可能会对损失函数的选择感到困惑。一个常见的问题是：为什么我们通常使用<strong>交叉熵 (Cross-Entropy)</strong> 作为损失函数，而不是像回归问题中那样直观的<strong>均方误差 (Mean Squared Error)</strong> 呢？毕竟，均方误差听起来也是衡量“错误”的一种方式。</p>
+<p>本文将以逻辑回归中的二分类问题为例，一步步带您深入理解交叉熵损失函数的由来及其统计学意义，揭示其在分类任务中的天然优势。</p>
+<hr>
+<h3 id="理解背景从二分类任务说起">理解背景：从二分类任务说起</h3>
+<p>让我们从一个典型的二分类场景开始。想象一下，我们需要根据一些特征来判断一个东西属于两个类别中的哪一个，比如判断一封邮件是否为垃圾邮件，或者一张图片中的动物是猫还是狗。</p>
+<ul>
+<li><strong>输入特征 (Input Features)</strong>: 我们拥有一系列数据样本，每个样本都包含一些可描述其特性的特征。我们将第 $n$ 个输入样本表示为 $x^n$。所以我们有输入特征 $x^1, x^2, x^3, \dots$。</li>
+<li><strong>类别标签 (Class Labels)</strong>: 原始的类别标签可能是文字描述，如 $C_1$ (例如“是垃圾邮件”) 或 $C_2$ (例如“非垃圾邮件”)。</li>
+<li><strong>目标输出 (Target Output)</strong>: 为了方便模型处理，我们将这些类别标签转换为二元数字标签。对于第 $n$ 个样本 $x^n$，其对应的目标输出为 $\hat{y}^n$。约定 $\hat{y}^n = 1$ 代表样本属于类别1，而 $\hat{y}^n = 0$ 代表样本属于类别2。于是，原始的类别标签 $C_1, C_1, C_2, \dots$ 就转换成了 $\hat{y}^1=1, \hat{y}^2=1, \hat{y}^3=0, \dots$。</li>
+<li><strong>我们的模型 (Our Model)</strong>: 我们的目标是构建一个函数 $f_{w,b}(x)$，它能够根据输入特征 $x$ 来预测其属于类别1的概率。这里的 $w$ 和 $b$ 是模型的参数（通常指权重和偏置）。在逻辑回归中，$f_{w,b}(x)$ 通常采用 Sigmoid 函数（也称逻辑函数），该函数可以将任意实数输入映射到 (0, 1) 的区间，这正好符合概率的定义。</li>
+</ul>
+<hr>
+<h3 id="核心思想似然函数-lwb">核心思想：似然函数 L(w,b)</h3>
+<p>现在，我们有了数据和模型框架，如何找到最优的参数 $w$ 和 $b$ 呢？答案在于<strong>最大化似然 (Maximizing Likelihood)</strong>。</p>
+<p>我们定义一个<strong>似然函数 $L(w,b)$</strong>。这个函数的核心思想是：在给定一组模型参数 $w$ 和 $b$ 的条件下，我们实际观测到的这组训练数据 $(\hat{y}^1, \hat{y}^2, \hat{y}^3, \dots)$ 出现的概率有多大。</p>
+<p>$$L(w, b) = f_{w,b}(x^1) f_{w,b}(x^2) (1 - f_{w,b}(x^3)) \cdots$$</p>
+<p><strong>为什么是这样的乘积形式呢？</strong></p>
+<p>这里我们假设每个样本的类别预测是相互独立的事件。</p>
+<ul>
+<li>对于第一个样本 $x^1$，如果它的真实标签 $\hat{y}^1 = 1$ (即属于类别1)，我们自然希望模型预测它属于类别1的概率 $f_{w,b}(x^1)$ 尽可能大（接近1）。</li>
+<li>对于第二个样本 $x^2$，如果它的真实标签 $\hat{y}^2 = 1$ (即属于类别1)，我们同样希望 $f_{w,b}(x^2)$ 尽可能大。</li>
+<li>对于第三个样本 $x^3$，如果它的真实标签 $\hat{y}^3 = 0$ (即属于类别2)，这意味着我们希望模型预测它属于类别1的概率 $f_{w,b}(x^3)$ 尽可能小（接近0）。这等价于希望模型预测它属于类别2的概率 $1 - f_{w,b}(x^3)$ 尽可能大（接近1）。</li>
+</ul>
+<p>因此，似然函数 $L(w,b)$ 就是将每个样本根据其真实标签所对应的模型预测概率相乘起来。我们的目标是找到一组参数 $w^*$ 和 $b^*$，使得这个总的似然度 $L(w,b)$ 最大化。这意味着我们选择的参数能够使得当前观测到的数据出现的概率最大，即模型预测的结果与真实数据最为吻合。</p>
+<p>$$w^*, b^* = \underset{w,b}{\arg \max} L(w,b)$$</p>
+<hr>
+<h3 id="优化技巧最小化负对数似然">优化技巧：最小化负对数似然</h3>
+<p>直接最大化 $L(w,b)$ 这个连乘积在计算上可能不太方便，尤其是当样本数量很多时，多个小于1的概率相乘可能会导致数值下溢。因此，在实践中，我们通常会对其进行一些转换：</p>
+<p>$$w^*, b^* = \underset{w,b}{\arg \max} L(w,b) = \underset{w,b}{\arg \min} [-\ln L(w,b)]$$</p>
+<p><strong>为什么要取对数再取负号呢？</strong></p>
+<ol>
+<li><strong>计算方便 (Logarithm for Numerical Stability and Simplicity)</strong>: 对数函数 ($\ln$) 是一个单调递增函数。这意味着如果 $L(w,b)$ 越大，那么 $\ln L(w,b)$ 也越大。因此，最大化 $L(w,b)$ 与最大化 $\ln L(w,b)$ 是等价的。</li>
+<li><strong>乘积变求和 (Product to Sum)</strong>: 对数运算可以将原来的概率连乘转换为对数概率的连加，即 $\ln(A \cdot B \cdot C) = \ln(A) + \ln(B) + \ln(C)$。求和形式在后续的求导和优化过程中通常更为简洁和稳定。</li>
+<li><strong>优化方向 (Minimization Convention)</strong>: 在机器学习领域，我们通常习惯于将优化问题表述为最小化一个“损失函数”或“代价函数”。因此，我们将最大化 $\ln L(w,b)$ 的问题进一步转换为最小化其相反数 $-\ln L(w,b)$ 的问题。这个 $-\ln L(w,b)$ 就构成了我们所说的损失函数。</li>
+</ol>
+<hr>
+<h3 id="推导过程负对数似然函数的具体形式">推导过程：负对数似然函数的具体形式</h3>
+<p>现在，我们来具体展开 $-\ln L(w,b)$ 并进行简化。
+以上述例子（假设 $\hat{y}^1=1, \hat{y}^2=1, \hat{y}^3=0, \dots$）为例：
+$$L(w, b) = f_{w,b}(x^1) f_{w,b}(x^2) (1 - f_{w,b}(x^3)) \cdots$$</p>
+<p><strong>1. 应用对数性质</strong></p>
+<p>对 $L(w,b)$ 取负对数：
+$$-\ln L(w, b) = -\ln \left[ f_{w,b}(x^1) f_{w,b}(x^2) (1 - f_{w,b}(x^3)) \cdots \right]$$利用对数性质 $\ln(ABC) = \ln(A) + \ln(B) + \ln(C)$，以及 $-\ln(AB) = -\ln(A) - \ln(B)$，我们将乘积转换为求和：$$-\ln L(w, b) = - \left[ \ln(f_{w,b}(x^1)) + \ln(f_{w,b}(x^2)) + \ln(1 - f_{w,b}(x^3)) + \cdots \right]$$即：$$-\ln L(w, b) = -\ln(f_{w,b}(x^1)) -\ln(f_{w,b}(x^2)) -\ln(1 - f_{w,b}(x^3)) - \cdots$$</p>
+<p><strong>2. 引入目标标签 $\hat{y}^n$ 实现统一表达</strong></p>
+<p>观察上述展开式，我们可以发现一个规律：</p>
+<ul>
+<li>对于真实标签 $\hat{y}^n = 1$ 的样本 $x^n$（属于类别1），其对负对数似然的贡献项是 $-\ln(f_{w,b}(x^n))$。我们希望 $f_{w,b}(x^n)$ 接近1，这样 $-\ln(f_{w,b}(x^n))$ 就会接近0，表示损失很小。</li>
+<li>对于真实标签 $\hat{y}^n = 0$ 的样本 $x^n$（属于类别2），其对负对数似然的贡献项是 $-\ln(1 - f_{w,b}(x^n))$。我们希望 $f_{w,b}(x^n)$ 接近0，从而 $1 - f_{w,b}(x^n)$ 接近1，这样 $-\ln(1 - f_{w,b}(x^n))$ 也会接近0，表示损失很小。</li>
+</ul>
+<p>我们可以利用 $\hat{y}^n$ 的取值（0或1）来巧妙地将这两种情况统一成一个表达式。对于单个样本 $x^n$，其对负对数似然的贡献可以表示为：
+$$\text{Loss}_n = - \left[ \hat{y}^n \ln(f_{w,b}(x^n)) + (1 - \hat{y}^n)\ln(1 - f_{w,b}(x^n)) \right]$$
+让我们验证一下这个统一表达式的巧妙之处：</p>
+<ul>
+<li>当 $\hat{y}^n = 1$ 时（样本属于类别1）：
+$$\text{Loss}_n = - \left[ 1 \cdot \ln(f_{w,b}(x^n)) + (1-1) \cdot \ln(1 - f_{w,b}(x^n)) \right] = -\ln(f_{w,b}(x^n))$$</li>
+<li>当 $\hat{y}^n = 0$ 时（样本属于类别2）：
+$$\text{Loss}_n = - \left[ 0 \cdot \ln(f_{w,b}(x^n)) + (1-0) \cdot \ln(1 - f_{w,b}(x^n)) \right] = -\ln(1 - f_{w,b}(x^n))$$
+可以看到，这个表达式完美地概括了两种情况。</li>
+</ul>
+<p><strong>3. 对所有样本求和得到总损失</strong></p>
+<p>最后，我们将所有 $N$ 个训练样本的损失项加起来，就得到了总的负对数似然函数，也就是我们最终的损失函数：
+$$-\ln L(w, b) = \sum_{n=1}^{N} - \left[ \hat{y}^n \ln(f_{w,b}(x^n)) + (1 - \hat{y}^n)\ln(1 - f_{w,b}(x^n)) \right]$$</p>
+<hr>
+<h3 id="关键一步与交叉熵的联系-">关键一步：与交叉熵的联系 🔗</h3>
+<p>这个推导出来的损失函数形式，和我们常说的<strong>交叉熵 (Cross-Entropy)</strong> 有什么关系呢？</p>
+<p>在信息论中，交叉熵 $H(p, q)$ 是用来衡量两个概率分布 $p$（真实分布）和 $q$（预测分布）之间差异性的一种度量。其一般定义为：
+$$H(p, q) = - \sum_{x} p(x) \ln(q(x))$$
+其中 $x$ 代表所有可能的事件。</p>
+<p>在我们的二分类问题中，对于单个样本 $x^n$：</p>
+<ul>
+<li><strong>真实分布 $p$</strong>: 由真实标签 $\hat{y}^n$ 决定。
+<ul>
+<li>$p(\text{类别}=1 \text{ for } x^n) = \hat{y}^n$ （样本 $x^n$ 真实为类别1的概率）</li>
+<li>$p(\text{类别}=0 \text{ for } x^n) = 1 - \hat{y}^n$ （样本 $x^n$ 真实为类别2的概率）</li>
+</ul>
+</li>
+<li><strong>模型预测分布 $q$</strong>: 由模型输出的概率 $f_{w,b}(x^n)$ 决定。
+<ul>
+<li>$q(\text{类别}=1 \text{ for } x^n) = f_{w,b}(x^n)$ （模型预测 $x^n$ 为类别1的概率）</li>
+<li>$q(\text{类别}=0 \text{ for } x^n) = 1 - f_{w,b}(x^n)$ （模型预测 $x^n$ 为类别2的概率）</li>
+</ul>
+</li>
+</ul>
+<p>将这两个分布代入二元情况下的交叉熵公式（只有两个可能事件：类别1和类别0）：
+$$H(p_{\text{true for } x^n}, q_{\text{model for } x^n}) = - \left[ p(\text{类别}=1) \ln(q(\text{类别}=1)) + p(\text{类别}=0) \ln(q(\text{类别}=0)) \right]$$
+代入具体的 $\hat{y}^n$ 和 $f_{w,b}(x^n)$：
+$$H(p_{\text{true for } x^n}, q_{\text{model for } x^n}) = - \left[ \hat{y}^n \ln(f_{w,b}(x^n)) + (1 - \hat{y}^n) \ln(1 - f_{w,b}(x^n)) \right]$$
+这与我们前面推导出的负对数似然函数中，单个样本的损失项是<strong>完全一致</strong>的！</p>
+<hr>
+<h3 id="总结所以为什么是交叉熵">总结：所以，为什么是交叉熵？</h3>
+<p>通过上述一步步的推导，我们可以清晰地看到：</p>
+<p>对于逻辑回归（以及许多其他输出概率的分类模型），<strong>最小化负对数似然函数的过程，实际上等价于最小化真实标签所代表的概率分布与模型预测的概率分布之间的交叉熵</strong>。</p>
+<p>因此，交叉熵作为损失函数并非是研究人员拍脑袋想出来的，而是源自统计学中非常核心的<strong>最大似然估计 (Maximum Likelihood Estimation, MLE)</strong> 原则。它自然地成为了衡量分类模型（尤其是输出概率的模型）预测好坏的损失函数。</p>
+<p>当我们训练模型，试图通过调整参数 $w$ 和 $b$ 来使得交叉熵损失函数尽可能小时，我们实际上是在驱动模型的预测概率分布去无限逼近数据的真实概率分布。这正是我们期望模型能做到的——准确地反映数据中蕴含的模式和规律。</p>
+<p>这也就解释了为什么在处理分类问题，特别是那些模型输出是概率值的场景下，交叉熵通常比均方误差更为合适和有效。均方误差主要衡量的是预测值与真实数值标签之间的欧氏距离，而交叉熵则更深刻地从信息论和概率分布的角度衡量了预测的“准确性”。</p>
+</section>
+
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="http://localhost:1313/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"
+      >深度学习</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="http://localhost:1313/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"
+      >损失函数</a
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="http://localhost:1313/posts/my-first-note/"
+      ><span>我的第一篇笔记</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2025
+    <a class="link" href="http://localhost:1313/">唐豆的秘密基地</a></div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>

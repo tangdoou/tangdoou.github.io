@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>我的简洁博客</title>
+    <title>唐豆的秘密基地</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on 我的简洁博客</description>
+    <description>Recent content on 唐豆的秘密基地</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 May 2025 01:25:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 May 2025 11:00:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于唐豆和这个小站</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sat, 24 May 2025 11:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;你好我是唐豆-唐一璇-&#34;&gt;你好，我是唐豆 (唐一璇) 👋&lt;/h2&gt;&#xA;&lt;p&gt;欢迎来到我的秘密基地！很高兴能在这里与你相遇。&lt;/p&gt;&#xA;&lt;p&gt;我目前是&lt;strong&gt;暨南大学（211）软件工程专业的大三在读本科生&lt;/strong&gt;，预计在 2026 年 6 月毕业。学习之余，我超喜欢打《永劫无间》！如果你也玩，欢迎加我一起开黑，这是我的 Steam 主页：&lt;a href=&#34;https://steamcommunity.com/profiles/76561199380659766&#34;&gt;点我前往 Steam&lt;/a&gt;。我还有跑步，骑行，摄影的爱好，平时喜欢听周杰伦。&lt;/p&gt;&#xA;&lt;h3 id=&#34;保持联系&#34;&gt;保持联系&lt;/h3&gt;&#xA;&lt;p&gt;你也可以通过以下方式找到我：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;邮箱&lt;/strong&gt;: &lt;a href=&#34;mailto:tangdoou@outlook.com&#34;&gt;tangdoou@outlook.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Twitter&lt;/strong&gt;: &lt;a href=&#34;https://twitter.com/ipowonder&#34;&gt;@ipowonder&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;微信号&lt;/strong&gt;: &lt;code&gt;tange-1234&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;我的学术之旅&#34;&gt;我的学术之旅&lt;/h3&gt;&#xA;&lt;p&gt;在暨南大学的这几年，我不仅在软件工程的海洋中遨游（GPA: 3.98/5.0，专业前 4%），还对许多计算机科学领域产生了浓厚的兴趣。特别着迷于&lt;strong&gt;算法分析与设计、人工智能原理、机器学习、强化学习与最优控制&lt;/strong&gt;等课程，它们为我打开了新世界的大门。&lt;/p&gt;&#xA;&lt;h3 id=&#34;科研探索与项目实践&#34;&gt;科研探索与项目实践&lt;/h3&gt;&#xA;&lt;p&gt;我热衷于将理论知识应用于实践，并从中学习和成长：&lt;/p&gt;&#xA;&lt;h4 id=&#34;1-基于生成式ai的文物图像高保真修复与超分辨率增强-省级大创项目&#34;&gt;1. 基于生成式AI的文物图像高保真修复与超分辨率增强 (省级大创项目)&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;作为&lt;strong&gt;核心成员/技术负责人&lt;/strong&gt;，我深度参与了国内首个开源文物图像修复多模态数据集的构建工作。我们爬取并处理了超过 5 万张高分辨率文物图像，并创新地使用 CLIP 模型进行语义标注，让AI能“理解”文本描述来进行修复。&lt;/li&gt;&#xA;&lt;li&gt;我主导实现了生成式图像修复模块，融合了多种前沿的扩散模型技术（如 DDNM, Guided Diffusion, PAIntA, RASG），能有效地修复文物图像中大面积的缺损和复杂的纹理，尤其在花卉、画像和壁画等类型的文物上效果显著。&lt;/li&gt;&#xA;&lt;li&gt;这个项目让我深刻体会到 AI 技术在文化遗产保护领域的巨大潜力，非常荣幸能为文物数字化贡献一份力量。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;2-基于人工智能的smec环境qos优化与高可靠性个性化部署策略研究&#34;&gt;2. 基于人工智能的SMEC环境QoS优化与高可靠性个性化部署策略研究&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在这个项目中，我作为核心贡献者（第二发明人），主要负责&lt;strong&gt;PPO强化学习在线优化模块&lt;/strong&gt;的设计与实现。我们通过智能体动态调整边缘计算的QoS参数，使得系统服务质量平均提升超过30%！&lt;/li&gt;&#xA;&lt;li&gt;这个项目也让我收获了一项&lt;strong&gt;国家发明专利（专利号：ZL202411824913.5）&lt;/strong&gt;，算是一份很棒的肯定。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;我的技能树-&#34;&gt;我的技能树 🌲&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;编程语言&lt;/strong&gt;: Python (非常熟练！), C/C++, Java (也还不错~)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;深度学习框架&lt;/strong&gt;: PyTorch (主力工具), TensorFlow (有所涉猎)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;AI核心技术&lt;/strong&gt;:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;生成式AI&lt;/strong&gt;: 对扩散模型 (Diffusion Models)、GANs 等有深入理解和实践经验。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Transformer架构&lt;/strong&gt;: 不仅理解原理，还能“手撕”Transformer模型和复现相关论文代码及实验。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;强化学习&lt;/strong&gt;: 扎实的理论基础和PPO等算法的实践经验。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;计算机视觉 (CV)&lt;/strong&gt;: 在图像补全、超分辨率、目标检测、图像分割等方向有实践。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;自然语言处理 (NLP)&lt;/strong&gt;: 熟悉多模态学习 (如 CLIP) 和文本生成。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;开发工具/平台&lt;/strong&gt;: Linux, Git (版本控制小能手)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;一些小成就-&#34;&gt;一些小成就 ✨&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;国家奖学金 (2024)&lt;/li&gt;&#xA;&lt;li&gt;亚太地区大学生数学建模竞赛国家一等奖 (2024)&lt;/li&gt;&#xA;&lt;li&gt;全国大学生数学建模竞赛广东省二等奖 (2024)&lt;/li&gt;&#xA;&lt;li&gt;蓝桥杯大赛软件赛省二等奖 (2025)&lt;/li&gt;&#xA;&lt;li&gt;本科生一等奖学金 (2024)&lt;/li&gt;&#xA;&lt;li&gt;优秀本科生荣誉称号 (2024)&lt;/li&gt;&#xA;&lt;li&gt;还有3项软件著作权。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;其他方面&#34;&gt;其他方面&lt;/h3&gt;&#xA;&lt;p&gt;在校期间，我曾担任勤工助学干部和宿舍楼栋联合会干部，也多次参与和组织志愿活动，这些经历锻炼了我的团队协作和管理能力。英语方面，已经通过了 CET-4，日常阅读英文文献和资料没有问题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>交叉熵公式推导（为啥分类问题用交叉熵作为损失函数）</title>
+      <link>http://localhost:1313/posts/cross-entropy/</link>
+      <pubDate>Sat, 24 May 2025 10:00:00 +1600</pubDate>
+      <guid>http://localhost:1313/posts/cross-entropy/</guid>
+      <description>分类问题为毛使用交叉熵作为损失函数，交叉熵的推导。</description>
+    </item>
     <item>
       <title>我的第一篇笔记</title>
       <link>http://localhost:1313/posts/my-first-note/</link>
       <pubDate>Sat, 24 May 2025 01:25:00 +0800</pubDate>
       <guid>http://localhost:1313/posts/my-first-note/</guid>
       <description>&lt;h2 id=&#34;你好hugo&#34;&gt;你好，Hugo！&lt;/h2&gt;&#xA;&lt;p&gt;这是我用 Hugo 和 Paper 主题写的第一篇笔记。&lt;/p&gt;&#xA;&lt;p&gt;感觉很棒！&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;列表项1&lt;/li&gt;&#xA;&lt;li&gt;列表项2&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>搜索</title>
+      <link>http://localhost:1313/search/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/search/</guid>
+      <description>在这里搜索本站内容</description>
+    </item>
+    <item>
+      <title>文章归档</title>
+      <link>http://localhost:1313/archives/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/archives/</guid>
+      <description>这里是我所有文章的归档列表，按时间倒序排列。</description>
     </item>
   </channel>
 </rss>

@@ -59,7 +59,7 @@ minify = true # 默认开启，减小网站体积
   [[menu.main]]
     identifier = "archives"
     name = "归档"
-    url = "/archives/" # "Paper" 主题是否支持 /archives/ 这种归档页需要确认
+    url = "/posts/" # "Paper" 主题是否支持 /archives/ 这种归档页需要确认
                      # PaperMod 需要特定 content/archives.md，"Paper" 可能不需要或有不同实现
     weight = 30
   [[menu.main]]
