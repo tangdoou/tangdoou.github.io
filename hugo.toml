@@ -1,7 +1,7 @@
 baseURL = "https://tangdoou.github.io/"
 languageCode = "zh-cn"
 title = "唐豆的秘密基地"
-theme = "PaperMod" # 确认这里是你主题文件夹的正确名称，如 "PaperMod"
+theme = "PaperMod" # 请确保这里是你主题文件夹的正确名称，通常是 "PaperMod"
 
 paginate = 5 # 每页文章数，可按需调整
 
@@ -21,7 +21,7 @@ minify = true # 默认开启，减小网站体积
   description = "唐豆的个人博客和秘密基地" # 网站描述
   author = ["唐豆"] # 全局作者名
 
-  defaultTheme = "auto" # "light", "dark", "auto" (根据系统切换)
+  defaultTheme = "auto" # 可选值: "light", "dark", "auto" (根据系统切换)
   disableThemeToggle = false # false 则显示主题切换按钮
 
   ShowReadingTime = true # 显示文章阅读时间
@@ -38,22 +38,20 @@ minify = true # 默认开启，减小网站体积
   # hidemeta = false # 是否隐藏文章元数据（日期、阅读时间等）
   # hideSummary = false # 是否在列表页隐藏文章摘要
 
-  # 主页配置 (推荐使用 Profile Mode 或 Home-Info Mode)
-  # 我们来配置 Profile Mode，效果通常比较好
-  profileMode]
-    enabled = true
-    title = "唐豆的秘密基地" # 可选，默认为 site.Title
-    subtitle = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ"
-    imageUrl = "images/touxiang.png" # 确保图片放在 static/images/touxiang.png
-    imageTitle = "唐豆的头像" # 图片的 alt 文本
-    imageWidth = 150 # 自定义图片宽度
-    imageHeight = 150 # 自定义图片高度
-    buttons = [
-      { name = "文章", url = "/posts" },
-      { name = "归档", url = "/archives" },
-      # 你可以添加更多按钮，比如 "关于我"
-      # { name = "关于", url = "/about" }
-    ]
+  # 主页配置 (Profile Mode)
+  profileMode.enabled = true
+  profileMode.title = "唐豆的秘密基地" # 可选，默认为 site.Title
+  profileMode.subtitle = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ"
+  profileMode.imageUrl = "images/touxiang.png" # 确保图片放在 static/images/touxiang.png
+  profileMode.imageTitle = "唐豆的头像" # 图片的 alt 文本
+  profileMode.imageWidth = 150 # 自定义图片宽度
+  profileMode.imageHeight = 150 # 自定义图片高度
+  profileMode.buttons = [
+    { name = "文章", url = "/posts" },
+    { name = "归档", url = "/archives" },
+    # 你可以添加更多按钮，比如 "关于我"
+    # { name = "关于", url = "/about" }
+  ]
 
   # 社交链接
   socialIcons = [
@@ -68,16 +66,15 @@ minify = true # 默认开启，减小网站体积
     { name = "rss", url = "/index.xml" } # RSS 订阅
   ]
 
-
   # 归档页面配置
   # archivesCreateDate = "" # 可选，归档页创建日期
   # archivesPageParams = { title = "文章归档", description = "所有文章都按时间顺序排列在这里" } # 可选，自定义归档页标题和描述
 
   # 如果你要启用文章编辑链接 (方便自己在 GitHub 上快速编辑)
-  # editPost]
-  #   URL = "https://github.com/tangdoou/tangdoou.github.io/tree/main/content" # 替换为你的仓库内容路径
-  #   Text = "Suggest Changes" # 按钮文字
-  #   appendFilePath = true # 追加文件路径到URL末尾
+  # (注意：如果取消注释，这里的键也使用了正确的点表示法)
+  # editPost.URL = "https://github.com/tangdoou/tangdoou.github.io/tree/main/content" # 替换为你的仓库内容路径
+  # editPost.Text = "Suggest Changes" # 按钮文字
+  # editPost.appendFilePath = true # 追加文件路径到URL末尾
 
   # SEO and Meta
   # cover = { responsiveImages = false, linkFullImages = true } # 文章封面图相关设置
@@ -114,7 +111,6 @@ minify = true # 默认开启，减小网站体积
     name = "标签"
     url = "/tags/"
     weight = 60
-
 
 # 输出格式，为搜索功能启用 JSON
 [outputs]
