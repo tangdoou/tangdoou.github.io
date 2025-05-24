@@ -21,7 +21,7 @@ theme = "paper"
 
   name = '唐豆'                         # 在主页显示
   bio = '喵喵喵'               # 在主页显示
-  avatar = '/images/touxiang.png' # 头像
+  avatar = '/static/images/touxiang.png' # 头像
 
   # 社交链接 (只保留你有的，并填入你的 ID)
   github = '你的GitHub用户名'
