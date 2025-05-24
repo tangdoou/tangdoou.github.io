@@ -2,7 +2,7 @@
 title: "关于唐豆和这个小站"
 date: 2025-05-24T11:00:00+08:00 # 你可以更新为当前日期
 draft: false
-slug: "about-me"
+# slug: "about-me"
 # ShowBreadCrumbs: false # 如果不希望在此页面显示面包屑导航，可以取消注释
 ---
 
