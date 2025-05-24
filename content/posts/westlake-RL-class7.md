@@ -433,40 +433,41 @@ $$
 
 所有这些算法都可以看作是求解相应 **贝尔曼方程 (BE)** 或 **贝尔曼最优方程 (BOE)** 的 **随机近似 (Stochastic Approximation)** 算法。
 
-| 算法 (Algorithm)           | 求解的方程 (Equation to solve)                                                                    | 方程类型                          |                |     |
-| :----------------------- | :------------------------------------------------------------------------------------------- | :---------------------------- | -------------- | --- |
-| Sarsa                    | $q\_{\pi}(s,a) = E[R\_{t+1} + \gamma q\_{\pi}(S\_{t+1}, A\_{t+1})S\_t=s, A\_t=a]$                   | S_t=s, A_t=a]$                | BE             |     |
-| Expected Sarsa           | $q_{\pi}(s,a) = E[R_{t+1} + \gamma \sum_{a'} \pi(a'                                          | S_{t+1}) q_{\pi}(S_{t+1}, a') | S_t=s, A_t=a]$ | BE  |
-| n-步 Sarsa (n-step Sarsa) | $q_{\pi}(s,a) = E[R_{t+1} + \dots + \gamma^{n-1}R_{t+n} + \gamma^n q_{\pi}(S_{t+n}, A_{t+n}) | S_t=s, A_t=a]$                | BE             |     |
-| Q-学习 (Q-learning)        | $q_*(s,a) = E[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a')                                    | S_t=s, A_t=a]$                | BOE            |     |
-| 蒙特卡洛 (Monte Carlo)       | $q_{\pi}(s,a) = E[G_t                                                                        | S_t=s, A_t=a]$                | BE (定义)        |     |
+| 算法 (Algorithm)         | 求解的方程 (Equation to solve)                                                                                                       | 条件 (Condition)       | 方程类型 (Equation Type) |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------------|------------------------|---------------------------|
+| Sarsa                    | $q_{\pi}(s,a) = \mathbb{E}[R_{t+1} + \gamma q_{\pi}(S_{t+1}, A_{t+1}) \mid S_t=s, A_t=a]$                                          | $S_t=s, A_t=a$         | BE                        |
+| Expected Sarsa           | $q_{\pi}(s,a) = \mathbb{E}\left[R_{t+1} + \gamma \sum_{a'} \pi(a' \mid S_{t+1}) q_{\pi}(S_{t+1}, a') \mid S_t=s, A_t=a\right]$       | $S_t=s, A_t=a$         | BE                        |
+| n-步 Sarsa (n-step Sarsa) | $q_{\pi}(s,a) = \mathbb{E}[R_{t+1} + \cdots + \gamma^{n-1}R_{t+n} + \gamma^n q_{\pi}(S_{t+n}, A_{t+n}) \mid S_t=s, A_t=a]$          | $S_t=s, A_t=a$         | BE                        |
+| Q-学习 (Q-learning)       | $q_*(s,a) = \mathbb{E}[R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') \mid S_t=s, A_t=a]$                                              | $S_t=s, A_t=a$         | BOE                       |
+| 蒙特卡洛 (Monte Carlo)     | $q_{\pi}(s,a) = \mathbb{E}[G_t \mid S_t=s, A_t=a]$                                                                                  | $S_t=s, A_t=a$         | BE（定义）               |
 
-\*   Sarsa及其变种（Expected Sarsa, n-step Sarsa）以及MC，在用于控制时，通常与策略改进步骤（如 $\epsilon$-greedy）结合，通过GPI框架来搜索最优策略。
-\*   Q-Learning直接求解贝尔曼最优方程，其目标 $q_*$ 已经对应最优策略。
 
-\*\*与基于模型的算法对比\*\*:
-\*   \*\*价值迭代 (Value Iteration)\*\* 和 \*\*策略迭代 (Policy Iteration)\*\* 是 \*\*基于模型 (model-based)\*\* 的方法，它们也求解贝尔曼（最优）方程，但需要知道环境模型 $p(s',r|s,a)$。
-\*   TD学习方法是 \*\*无模型 (model-free)\*\* 的方法，它们通过与环境交互采样经验来求解这些方程。
+*   Sarsa及其变种（Expected Sarsa, n-step Sarsa）以及MC，在用于控制时，通常与策略改进步骤（如 $\epsilon$-greedy）结合，通过GPI框架来搜索最优策略。
+*   Q-Learning直接求解贝尔曼最优方程，其目标 $q_*$ 已经对应最优策略。
+
+**与基于模型的算法对比**:
+*   **价值迭代 (Value Iteration)** 和 **策略迭代 (Policy Iteration)** 是 **基于模型 (model-based)** 的方法，它们也求解贝尔曼（最优）方程，但需要知道环境模型 $p(s',r|s,a)$。
+*   TD学习方法是 **无模型 (model-free)** 的方法，它们通过与环境交互采样经验来求解这些方程。
 
 ---
 
 ### 7. 总结 (Summary of Lecture)
 
-1.  \*\*启发性示例\*\*: 展示了RM算法与TD算法的联系。
-2.  \*\*基础TD算法 (状态价值)\*\*: 介绍了TD(0)用于策略评估，核心概念是TD目标、TD误差和自举。
-3.  \*\*Sarsa (动作价值)\*\*: 将TD思想扩展到动作价值，是同策略的控制算法。
-4.  \*\*Sarsa变种\*\*:
-    \*   \*\*Expected Sarsa\*\*: 降低了Sarsa的方差。
-    \*   \*\*n-step Sarsa\*\*: 统一了Sarsa和MC方法，提供了偏差-方差的权衡。
-5.  \*\*Q-Learning\*\*: 非常重要的离策略控制算法，直接学习最优动作价值函数。
-    \*   \*\*On-policy vs. Off-policy\*\*: 是强化学习中的重要概念。Sarsa, MC (典型控制) 是on-policy，Q-Learning是off-policy。
-    \*   离策略性质使得Q-Learning在与神经网络结合（如Deep Q-Learning, DQN）时非常关键，因为可以利用经验回放 (experience replay) 等技术。
-6.  \*\*统一视角\*\*: 所有TD算法共享相似的更新结构，区别在于TD目标的定义；它们都是求解贝尔曼（最优）方程的随机近似方法。
-7.  \*\*展望\*\*: 下节课将介绍价值函数近似，将TD方法从表格形式推广到函数形式，引入神经网络，讲解经典的Deep Q-Learning。
+1.  **启发性示例**: 展示了RM算法与TD算法的联系。
+2.  **基础TD算法 (状态价值)**: 介绍了TD(0)用于策略评估，核心概念是TD目标、TD误差和自举。
+3.  **Sarsa (动作价值)**: 将TD思想扩展到动作价值，是同策略的控制算法。
+4.  **Sarsa变种**:
+    *   **Expected Sarsa**: 降低了Sarsa的方差。
+    *   **n-step Sarsa**: 统一了Sarsa和MC方法，提供了偏差-方差的权衡。
+5.  **Q-Learning**: 非常重要的离策略控制算法，直接学习最优动作价值函数。
+    *   **On-policy vs. Off-policy**: 是强化学习中的重要概念。Sarsa, MC (典型控制) 是on-policy，Q-Learning是off-policy。
+    *   离策略性质使得Q-Learning在与神经网络结合（如Deep Q-Learning, DQN）时非常关键，因为可以利用经验回放 (experience replay) 等技术。
+6.  **统一视角**: 所有TD算法共享相似的更新结构，区别在于TD目标的定义；它们都是求解贝尔曼（最优）方程的随机近似方法。
+7.  **展望**: 下节课将介绍价值函数近似，将TD方法从表格形式推广到函数形式，引入神经网络，讲解经典的Deep Q-Learning。
 
-\*\*核心要点\*\*:
-\*   TD学习是强化学习中非常核心和实用的一类无模型方法。
-\*   理解TD目标、TD误差和自举是掌握TD算法的关键。
-\*   Sarsa (on-policy) 和 Q-Learning (off-policy) 是两种基本且重要的TD控制算法。
-\*   选择合适的TD算法及参数 (如 $n$ in n-step Sarsa, $\alpha, \epsilon$) 对学习效果至关重要。
+**核心要点**:
+*   TD学习是强化学习中非常核心和实用的一类无模型方法。
+*   理解TD目标、TD误差和自举是掌握TD算法的关键。
+*   Sarsa (on-policy) 和 Q-Learning (off-policy) 是两种基本且重要的TD控制算法。
+*   选择合适的TD算法及参数 (如 $n$ in n-step Sarsa, $\alpha, \epsilon$) 对学习效果至关重要。
 *   探索与利用的平衡对于所有控制算法都是核心问题。
