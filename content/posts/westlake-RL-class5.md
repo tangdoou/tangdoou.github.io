@@ -1,3 +1,18 @@
+---
+title: "西湖大学 RL 第五课：蒙特卡洛方法" 
+date: 2025-05-20T10:00:00+08:00 
+draft: false # 设置为 false 来发布，true 则为草稿，不会显示在最终网站上
+authors: ["唐豆"] # 作者
+tags: ["深度学习", "强化学习"] # 标签
+categories: ["学习"] 
+math: true
+summary: "西湖大学强化学习第五讲蒙特卡洛方法。" 
+
+ShowToc: true
+TocOpen: false 
+---
+
+
 ## 强化学习的数学原理 - 第五讲：基于蒙特卡洛的强化学习算法
 
 **课程回顾与本次课内容概要**
