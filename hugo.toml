@@ -22,7 +22,8 @@ minify = true # 默认开启，减小网站体积
   color = "linen"
 
   # 用于主页显示的头像、名字和简介 (这些是 "Paper" 主题常用的参数)
-  avatar = "images/touxiang.png"    # 确保图片在 static/images/touxiang.png
+  avatar = "https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250611/8wxG/1096X1090/image.png" 
+
   name = "唐豆"
   bio = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ" # 你可以自定义这里的简介
 
