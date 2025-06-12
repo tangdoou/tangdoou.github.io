@@ -1,6 +1,7 @@
 ---
 title: "十分钟上手模型上下文协议 (MCP)"
 date: 2025-06-11
+draft: true
 description: "一个关于模型上下文协议 (MCP) 的交互式深度解析，涵盖其核心架构、影响价值、安全挑战及生态系统。"
 tags: ["AI", "MCP", "LLM", "Tech"]
 ---
