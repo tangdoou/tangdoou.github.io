@@ -1,5 +1,5 @@
 ---
-title: "十分钟上手 MCP 
+title: "十分钟上手 MCP "
 date: 2025-06-12T10:00:00+08:00 
 draft: false # 设置为 false 来发布，true 则为草稿，不会显示在最终网站上
 authors: ["唐豆"] # 作者
