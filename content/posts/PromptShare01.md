@@ -80,7 +80,7 @@ TocOpen: false
 
 ### 2. 论文精读导师 (苏格拉底式提问)
 
-我很喜欢柏拉图提问的方法学习，也推荐下
+我很喜欢苏格拉底提问的方法学习，也推荐下
 
 ```text
 # Role: 专业的论文精读导师 (Expert Academic Paper Reading Tutor)
