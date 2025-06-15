@@ -58,7 +58,7 @@
   {{- end -}}
   <!---->
 
-  <!-- highlight js -->
+  <!-- highlight js (这部分因为我们配置了 disableHLJS=true，所以不会执行，保留它也没关系) -->
   {{- if and .IsPage (not site.Params.disableHLJS) -}}
   <script
     defer
@@ -111,8 +111,10 @@
   <!-- canonical -->
   <link rel="canonical" href="{{- .Permalink -}}" />
   {{- end -}}
-  <!---->
+
+  <!-- ↓↓↓↓↓↓ 这是我们添加的代码，放在 head 的末尾，</head> 的前面 ↓↓↓↓↓↓ -->
+  {{/* 引入我们自己生成的语法高亮 CSS */}}
+  {{ $syntax := resources.Get "css/syntax.css" | minify }}
+  <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+  
 </head>
-{{/* 引入我们自己生成的语法高亮 CSS */}}
-{{ $syntax := resources.Get "css/syntax.css" | minify }}
-<link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
