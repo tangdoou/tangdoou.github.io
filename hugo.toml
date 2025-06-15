@@ -35,6 +35,9 @@ minify = true
   math = true
   localKatex = false
 
+  disableHighlightJs = true
+
+
 # 导航菜单
 [menu]
   [[menu.main]]
