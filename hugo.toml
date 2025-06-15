@@ -35,7 +35,7 @@ minify = true
   math = true
   localKatex = false
 
-  disableHighlightJs = true
+  disableHLJS = true
 
 
 # 导航菜单
