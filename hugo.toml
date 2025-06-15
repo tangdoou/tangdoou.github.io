@@ -70,15 +70,19 @@ minify = true
 [outputs]
   home = ["HTML", "RSS"]
 
-# --- 关键修改区域 (已修正) ---
+
 [markup]
-  # 1. 语法高亮配置
+
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    # 修正：将 "inline" 改回布尔值 true，以匹配 Hugo 的期望
-    lineNos = true 
+    # 1. 我们依然需要行号，所以这里保持 true
+    lineNos = true
+    # 2. 这是解决问题的关键！告诉 Hugo 不要用表格来渲染行号
+    lineNumbersInTable = false
+    # 3. 确保生成 CSS 类，以便样式生效
     noClasses = false
+    # 4. 你选择的高亮主题
     style = "dracula"
 
   # 2. Goldmark 渲染器配置，解决数学公式问题 (这部分是正确的，请保留)
