@@ -1,51 +1,41 @@
 baseURL = "https://tangdoou.github.io/"
 languageCode = "zh-cn"
 title = "唐豆的秘密基地"
-theme = "paper" # <--- 修正为你的主题文件夹名称 "paper"
+theme = "paper"
 
-# 分页配置 (修正后的格式)
+# 分页配置
 [pagination]
   pagerSize = 5
 
 enableRobotsTXT = true
-buildDrafts = false # 部署时设为 false，本地预览时可设为 true (或使用 hugo server -D)
+buildDrafts = false
 buildFuture = false
 buildExpired = false
 
-minify = true # 默认开启，减小网站体积
+minify = true
 
 # "Paper" 主题的参数配置
-# 注意：这里的很多参数与 "PaperMod" 不同
 [params]
-  # "Paper" 主题的颜色方案 (例如: linen, wheat, gray, light)
-  # 如果你之前有 color = 'linen'，可以保留或选择其他
   color = "linen"
-
-  # 用于主页显示的头像、名字和简介 (这些是 "Paper" 主题常用的参数)
-  avatar = "https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250611/8wxG/1096X1090/image.png" 
-
+  avatar = "https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250611/8wxG/1096X1090/image.png"
   name = "唐豆"
-  bio = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ" # 你可以自定义这里的简介
+  bio = "你好，我是唐豆！欢迎来到我的秘密基地，这里会记录我的学习、思考和一些有趣的事物。喵喵喵~ ᓚᘏᗢ"
+  
+  # 社交链接
+  github = "tangdoou"
+  twitter = "ipowonder"
+  email = "tangdoou@outlook.com"
+  steam = "76561199380659766"
+  wechat = "tange-1234"
 
-  # "Paper" 主题的社交链接格式 (直接用键值对)
-  github = "tangdoou"                 # 你的 GitHub 用户名
-  twitter = "ipowonder"               # 你的 Twitter 用户名或 Handle
-  email = "tangdoou@outlook.com"    # 你的 Email
-  steam = "76561199380659766"       # 你的 Steam ID64
-  wechat = "tange-1234"               # 你的微信号 (主题可能会显示ID或提供某种方式)
-
-  # 是否在页脚显示 RSS 订阅链接 (根据 "Paper" 主题的功能)
+  # 在页脚显示 RSS 订阅链接
   rss = true
 
-  # 如果你的 "Paper" 主题支持 KaTeX 数学公式，可以通过类似参数开启
+  # 开启主题的数学公式支持（这会加载 KaTeX/MathJax 脚本）
   math = true
-  localKatex = false
+  localKatex = false # 保持 false 以使用 CDN，速度更快
 
-  # "Paper" 主题通常默认使用 Hugo 内置的 Chroma 进行语法高亮
-  # 如果主题有特定设置，比如禁用内置高亮以使用 Prism.js，可能会有 disableHLJS = true 之类的参数
-  # 我们暂时不设置这个，让主题使用默认行为
-
-# 导航菜单 (这部分是 Hugo 标准配置，通常可以保持不变)
+# 导航菜单
 [menu]
   [[menu.main]]
     identifier = "home"
@@ -60,44 +50,53 @@ minify = true # 默认开启，减小网站体积
   [[menu.main]]
     identifier = "archives"
     name = "归档"
-    url = "/posts/" # "Paper" 主题是否支持 /archives/ 这种归档页需要确认
-                     # PaperMod 需要特定 content/archives.md，"Paper" 可能不需要或有不同实现
+    url = "/posts/"
     weight = 30
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 50 # 将“关于”调整到“标签”前
+    weight = 50
   [[menu.main]]
     identifier = "tags"
     name = "标签"
     url = "/tags/"
     weight = 60
-  # [[menu.main]]
-  #   identifier = "search" # <--- 注意：搜索功能对主题依赖很大
-  #   name = "搜索"
-  #   url = "/search/"    # "Paper" 主题可能没有内置此路径的搜索页面
-  #   weight = 40
 
 # 输出格式
-# JSON 输出主要是为 PaperMod 的搜索功能服务的
-# "Paper" 主题可能不需要，我们先简化它，只保留 HTML 和 RSS
 [outputs]
   home = ["HTML", "RSS"]
 
-# 语法高亮
+# --- 关键修改区域 ---
 [markup]
+  # 1. 语法高亮配置优化
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    lineNos = true       # 代码块显示行号
-    style = "dracula"    # 这个高亮主题应该能继续工作
+    # 'inline' 方式的行号比 'table' 更稳定，不易出现对齐和换行问题
+    lineNos = "inline" 
+    # 确保生成 CSS 类，而不是内联样式，这对于主题兼容性更好
+    noClasses = false
+    # 高亮主题可以保持不变
+    style = "dracula"
 
-  [markup.goldmark.renderer]
-    unsafe = true # 如果你需要在 Markdown 中使用原始 HTML
+  # 2. Goldmark 渲染器配置，解决数学公式问题
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # 允许数学公式库（如KaTeX）生成的HTML标签被安全渲染
+      unsafe = true
+    
+    # 新增 passthrough 扩展，这是解决公式渲染问题的核心
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        # 定义块级公式的定界符
+        block = [['$$', '$$']]
+        # 定义行内公式的定界符
+        inline = [['$', '$']]
 
 # 分类法
 [taxonomies]
   category = "categories"
   tag = "tags"
-  series = "series" # 如果你想使用系列文章功能
+  series = "series"
