@@ -33,7 +33,7 @@ minify = true
 
   # 开启主题的数学公式支持（这会加载 KaTeX/MathJax 脚本）
   math = true
-  localKatex = false # 保持 false 以使用 CDN，速度更快
+  localKatex = false
 
 # 导航菜单
 [menu]
@@ -67,32 +67,26 @@ minify = true
 [outputs]
   home = ["HTML", "RSS"]
 
-# --- 关键修改区域 ---
+# --- 关键修改区域 (已修正) ---
 [markup]
-  # 1. 语法高亮配置优化
+  # 1. 语法高亮配置
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    # 'inline' 方式的行号比 'table' 更稳定，不易出现对齐和换行问题
-    lineNos = "inline" 
-    # 确保生成 CSS 类，而不是内联样式，这对于主题兼容性更好
+    # 修正：将 "inline" 改回布尔值 true，以匹配 Hugo 的期望
+    lineNos = true 
     noClasses = false
-    # 高亮主题可以保持不变
     style = "dracula"
 
-  # 2. Goldmark 渲染器配置，解决数学公式问题
+  # 2. Goldmark 渲染器配置，解决数学公式问题 (这部分是正确的，请保留)
   [markup.goldmark]
     [markup.goldmark.renderer]
-      # 允许数学公式库（如KaTeX）生成的HTML标签被安全渲染
       unsafe = true
     
-    # 新增 passthrough 扩展，这是解决公式渲染问题的核心
     [markup.goldmark.extensions.passthrough]
       enable = true
       [markup.goldmark.extensions.passthrough.delimiters]
-        # 定义块级公式的定界符
         block = [['$$', '$$']]
-        # 定义行内公式的定界符
         inline = [['$', '$']]
 
 # 分类法
