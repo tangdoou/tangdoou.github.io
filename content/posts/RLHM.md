@@ -40,10 +40,10 @@ pip install "gymnasium[box2d]" torch numpy matplotlib
 >     ```bash
 >     # 1. (如果没装) 安装 Homebrew
 >     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
->     
+>         
 >     # 2. 安装 SWIG
 >     brew install swig
->     
+>         
 >     # 3. 再次运行 pip 安装命令
 >     pip install "gymnasium[box2d]"
 >     ```
@@ -522,7 +522,7 @@ PPO-GAE 在前 2000 回合的训练中表现出色，但其奖励曲线在末期
 ### 4.5 意外的发现：Double DQN 的长期训练陷阱
 
 这里为了更加严谨的对照长期训练，我将 DDQN 的最大训练汇合改为 6000，作为对照。但是结果不尽如人意，再进行到 2200 次左右，训练的 reward 降到了-100 多，继续训练也不会有好结果了，我就暂停了训练。
-  
+
 *![06-15_23.29.12.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/6S0L/1400X700/Google_Chrome_2025-06-15_23.29.12.png)
 这张图记录了一个 Double DQN 智能体从“新手”到“专家”，再到“策略崩溃”（老年痴呆）的全过程。乍一看感觉还行是吧，仔细看纵轴的比例尺就知道了。其实模型在 600-700 的 episode 表现相当不错了，从 800 往后开始崩溃。
 
@@ -620,7 +620,7 @@ print(f"SB3 PPO 平均奖励: {mean_reward:.2f} +/- {std_reward:.2f}")
 eval_env.close()
 vec_env.close()
 ```
-运行后，SB3的评估结果能轻松达到 100+ 的平均分，远超我们手写的版本。
+运行后，SB3的评估结果能轻松达到 100+ 的平均分，和我们手写的版本差不多（甚至差一点）。
 
 ![1244X468/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/kGvZ/1244X468/image.png)
 ### 5.3 为什么差距这么大？
@@ -647,15 +647,15 @@ tensorboard --logdir ./logs/sb3_logs/
 - **`rollout/ep_rew_mean(平均回合奖励)`**: 
 	- 曲线从负值（大约 -150）开始，这表示在训练初期，智能体完全不知道如何降落，几乎每次都坠毁，因此受到惩罚（负奖励）。
 	- 随着训练步数（Step）的增加，曲线稳步上升，最终在 200 分以上达到平稳。这清晰地表明，智能体通过学习，策略不断优化，逐渐掌握了安全、精准降落的技巧，从而获得了很高的正奖励。
-![平均奖励曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/Wg3h/2130X932/image.png)
+	![平均奖励曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/Wg3h/2130X932/image.png)
 
 - **`rollout/ep_len_mean(平均回合长度)`**: 
 	- 曲线一开始比较短，然后迅速增长并趋于平稳。在月球降落任务中，过早结束通常意味着坠毁。
 	- 曲线的增长说明智能体学会了如何通过控制推进器在空中停留更长的时间，以便更好地调整姿态和速度，最终实现成功降落，而不是很快就掉下去。
-![损失函数曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/aEyX/2150X946/image.png)
+	![损失函数曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/aEyX/2150X946/image.png)
 
 - **`time/fps(每秒帧数)`**: 
 	- 这个值主要反映了你的**计算性能**或**训练速度**。数值越高，训练得越快。
 	- 图中的曲线在短暂的初始波动后稳定在 3300 左右，说明训练速度是相当稳定的。
-![可解释方差](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/GDue/2116X1066/image.png)
+	![可解释方差](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/GDue/2116X1066/image.png)
 
