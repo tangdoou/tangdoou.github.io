@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ site.LanguageCode | default "zh-cn" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} - {{ site.Title }}</title>
+  <style>
+    body { max-width: 860px; margin: 2rem auto; padding: 0 1rem; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height: 1.7; }
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .meta { color: #666; font-size: .95rem; }
+    .year { margin-top: 1.8rem; }
+    .empty { color: #777; }
+  </style>
+</head>
+<body>
+  <h1>{{ .Title }}</h1>
+  {{ with .Summary }}<p class="meta">{{ . }}</p>{{ end }}
+
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ if gt (len $posts) 0 }}
+    {{ range ($posts.GroupByDate "2006") }}
+      <section class="year">
+        <h2>{{ .Key }}</h2>
+        <ul>
+          {{ range .Pages }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <span class="meta"> — {{ .Date.Format "2006-01-02" }}</span>
+              {{ with .Params.tags }}
+                <small class="meta">（标签：{{ delimit . "、" }}）</small>
+              {{ end }}
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  {{ else }}
+    <p class="empty">还没有文章，暂时无法生成归档。</p>
+  {{ end }}
+</body>
+</html>
