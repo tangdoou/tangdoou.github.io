@@ -53,7 +53,7 @@ minify = true
   [[menu.main]]
     identifier = "archives"
     name = "归档"
-    url = "/posts/"
+    url = "/archives/"
     weight = 30
   [[menu.main]]
     identifier = "about"
