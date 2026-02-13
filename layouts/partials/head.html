@@ -116,5 +116,7 @@
   {{/* 引入我们自己生成的语法高亮 CSS */}}
   {{ $syntax := resources.Get "css/syntax.css" | minify }}
   <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+  <link rel="stylesheet" href="{{ "css/site-pv-footer.css" | absURL }}">
+  <script defer src="{{ "js/site-pv-footer.js" | absURL }}"></script>
   
 </head>
