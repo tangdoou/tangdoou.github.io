@@ -17,7 +17,7 @@
   }
 
   function ensureVisibleNode() {
-    var footer = document.querySelector('footer');
+    var footer = document.querySelector('body > footer') || document.querySelector('footer:last-of-type');
     if (!footer) return null;
 
     var existing = document.getElementById('site-pv-footer');
