@@ -1,0 +1,14 @@
+.pv-badge {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: rgb(100 116 139);
+  opacity: 0.95;
+}
+
+.pv-badge .pv-icon {
+  margin-right: 0.3rem;
+}
+
+.dark .pv-badge {
+  color: rgb(148 163 184);
+}
