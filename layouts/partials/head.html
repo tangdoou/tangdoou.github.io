@@ -116,5 +116,18 @@
   {{/* 引入我们自己生成的语法高亮 CSS */}}
   {{ $syntax := resources.Get "css/syntax.css" | minify }}
   <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
+
+  <link rel="stylesheet" href="{{ "css/pageview.css" | absURL }}">
+
+  {{/* Busuanzi 原始计数节点（隐藏），由自定义脚本读取并渲染在页面指定位置 */}}
+  <span id="busuanzi_container_page_pv" style="display:none;">
+    <span id="busuanzi_value_page_pv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv" style="display:none;">
+    <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script defer src="{{ "js/pageview.js" | absURL }}"></script>
   
 </head>
