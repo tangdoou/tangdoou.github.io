@@ -22,33 +22,19 @@
     return wrapper;
   }
 
-  function addHomePagePv() {
-    if (window.location.pathname !== '/') {
+  function addSitePvToBottom() {
+    if (document.getElementById('busuanzi_container_site_pv_bottom')) {
       return;
     }
 
-    const homeIntro = document.querySelector('main > div');
-    if (!homeIntro) {
-      return;
-    }
-
-    if (!document.getElementById('busuanzi_container_page_pv_home')) {
-      const badge = createPvBadge(
-        'busuanzi_container_page_pv_home',
-        'busuanzi_value_page_pv_home',
-        '首页浏览量 '
-      );
-      homeIntro.appendChild(badge);
-    }
-
-    if (!document.getElementById('busuanzi_container_site_pv_home')) {
-      const siteBadge = createPvBadge(
-        'busuanzi_container_site_pv_home',
-        'busuanzi_value_site_pv_home',
-        '全站浏览量 '
-      );
-      homeIntro.appendChild(siteBadge);
-    }
+    const targetContainer = document.querySelector('footer') || document.body;
+    const siteBadge = createPvBadge(
+      'busuanzi_container_site_pv_bottom',
+      'busuanzi_value_site_pv_bottom',
+      '全站浏览量 '
+    );
+    siteBadge.classList.add('pv-site-bottom');
+    targetContainer.appendChild(siteBadge);
   }
 
   function addPostPagePv() {
@@ -71,8 +57,7 @@
 
   function syncBusuanziValues() {
     const map = [
-      ['busuanzi_value_page_pv', 'busuanzi_value_page_pv_home', 'busuanzi_container_page_pv_home'],
-      ['busuanzi_value_site_pv', 'busuanzi_value_site_pv_home', 'busuanzi_container_site_pv_home'],
+      ['busuanzi_value_site_pv', 'busuanzi_value_site_pv_bottom', 'busuanzi_container_site_pv_bottom'],
       ['busuanzi_value_page_pv', 'busuanzi_value_page_pv_post', 'busuanzi_container_page_pv_post']
     ];
 
@@ -89,7 +74,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    addHomePagePv();
+    addSitePvToBottom();
     addPostPagePv();
 
     const poller = setInterval(syncBusuanziValues, 500);
