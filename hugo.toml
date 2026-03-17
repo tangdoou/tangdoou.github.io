@@ -63,6 +63,11 @@ minify = true
     url = "/archives/"
     weight = 30
   [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 40
+  [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
