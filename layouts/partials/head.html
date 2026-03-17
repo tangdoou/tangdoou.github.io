@@ -16,18 +16,10 @@
 
   <!-- author -->
   {{- $site_author := or site.Author.name site.Params.name site.Title -}}
+  {{- $meta_description := or .Description .Params.description .Summary site.Params.description (print `A personal blog`) -}}
   <!---->
-  {{- if eq .Kind "page" -}}
-  <meta name="description" content="{{- .Summary -}}" />
+  <meta name="description" content="{{- $meta_description | plainify -}}" />
   <meta name="author" content="{{- or .Params.author $site_author -}}" />
-  {{- else -}}
-  <!---->
-  <meta
-    name="description"
-    content="{{- site.Params.description | default (print `A personal blog`) -}}"
-  />
-  <meta name="author" content="{{- $site_author -}}" />
-  {{- end -}}
 
   <!-- css & js -->
   {{- $main := resources.Get "main.css" -}}
@@ -47,7 +39,7 @@
   <!-- avatar -->
   {{- $avatar_url := $.Scratch.Get "avatar_url" -}}
   <!---->
-  {{- if $avatar_url -}}
+  {{- if and $avatar_url .IsHome -}}
   <link rel="preload" as="image" href="{{- $avatar_url -}}" />
   {{- end -}}
   <!---->
@@ -118,16 +110,6 @@
   <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
 
   <link rel="stylesheet" href="{{ "css/pageview.css" | absURL }}">
-
-  {{/* Busuanzi 原始计数节点（隐藏），由自定义脚本读取并渲染在页面指定位置 */}}
-  <span id="busuanzi_container_page_pv" style="display:none;">
-    <span id="busuanzi_value_page_pv"></span>
-  </span>
-  <span id="busuanzi_container_site_pv" style="display:none;">
-    <span id="busuanzi_value_site_pv"></span>
-  </span>
-
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script defer src="{{ "js/pageview.js" | absURL }}"></script>
   
 </head>

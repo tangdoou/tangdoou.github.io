@@ -1,4 +1,6 @@
 (function () {
+  const BUSUANZI_SCRIPT_ID = 'busuanzi-script';
+
   function createPvBadge(containerId, valueId, labelText) {
     const wrapper = document.createElement('div');
     wrapper.id = containerId;
@@ -20,6 +22,39 @@
     wrapper.appendChild(label);
     wrapper.appendChild(value);
     return wrapper;
+  }
+
+  function ensureHiddenNode(containerId, valueId) {
+    if (document.getElementById(containerId)) {
+      return;
+    }
+
+    const wrapper = document.createElement('span');
+    wrapper.id = containerId;
+    wrapper.style.display = 'none';
+
+    const value = document.createElement('span');
+    value.id = valueId;
+
+    wrapper.appendChild(value);
+    document.body.appendChild(wrapper);
+  }
+
+  function ensureBusuanziSourceNodes() {
+    ensureHiddenNode('busuanzi_container_page_pv', 'busuanzi_value_page_pv');
+    ensureHiddenNode('busuanzi_container_site_pv', 'busuanzi_value_site_pv');
+  }
+
+  function loadBusuanziScript() {
+    if (document.getElementById(BUSUANZI_SCRIPT_ID)) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = BUSUANZI_SCRIPT_ID;
+    script.async = true;
+    script.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    document.body.appendChild(script);
   }
 
   function addSitePvToBottom() {
@@ -74,8 +109,10 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    ensureBusuanziSourceNodes();
     addSitePvToBottom();
     addPostPagePv();
+    loadBusuanziScript();
 
     const poller = setInterval(syncBusuanziValues, 500);
     setTimeout(function () {

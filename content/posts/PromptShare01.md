@@ -6,7 +6,7 @@ authors: ["唐豆"] # 作者
 tags: ["分享", "Prompt"] # 标签
 categories: ["学习"] 
 math: true
-summary: "无" 
+summary: "分享我常用的 Prompt 模板，并聊聊我对提示工程和模型能力边界的看法。"
 
 ShowToc: true
 TocOpen: false 

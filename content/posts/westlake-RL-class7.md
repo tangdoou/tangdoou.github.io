@@ -6,7 +6,7 @@ authors: ["唐豆"] # 作者
 tags: ["深度学习", "强化学习"] # 标签
 categories: ["学习"] 
 math: true
-summary: "第七讲" 
+summary: "西湖大学强化学习第七讲，聚焦时序差分学习的核心思想与推导。"
 
 ShowToc: true
 TocOpen: false 

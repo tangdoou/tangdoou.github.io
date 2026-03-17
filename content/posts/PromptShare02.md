@@ -6,7 +6,7 @@ authors: ["唐豆"] # 作者
 tags: ["分享", "Prompt"] # 标签
 categories: ["学习"] 
 math: true
-summary: "无" 
+summary: "整理第二批高频实用 Prompt，覆盖文稿整理、学术翻译、Prompt 优化等常见任务。"
 
 ShowToc: true
 TocOpen: false 

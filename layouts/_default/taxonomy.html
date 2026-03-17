@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ $title := .Title }}
+{{ if and (eq .Type "tags") (ne .Title "") }}
+  {{ $title = cond (eq .Title "Tags") "标签" .Title }}
+{{ else if and (eq .Type "categories") (ne .Title "") }}
+  {{ $title = cond (eq .Title "Categories") "分类" .Title }}
+{{ end }}
+<article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">{{ $title }}</h1>
+    {{ with .Data.Terms }}
+    <p class="opacity-70">共整理出 {{ len .Alphabetical }} 个条目。</p>
+    {{ else }}
+    <p class="opacity-70">这里收录了当前条目下的全部文章。</p>
+    {{ end }}
+  </header>
+
+  {{ with .Data.Terms }}
+  <ul>
+    {{ range .Alphabetical }}
+    <li>
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+      <small class="opacity-60">({{ .Count }})</small>
+    </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+    {{ if gt (len .Pages) 0 }}
+    <ul>
+      {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <small class="opacity-60"> · {{ .Date.Format "2006-01-02" }}</small>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p>这里暂时还没有内容。</p>
+    {{ end }}
+  {{ end }}
+</article>
+{{ end }}

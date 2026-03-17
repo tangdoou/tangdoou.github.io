@@ -9,12 +9,12 @@ tags:
 categories:
   - 学习
 math: true
-summary: 无
+summary: "从环境搭建到算法实现，记录 DQN、PPO 与 DPO/DDPO 在 LunarLander-v3 上的实验与对比。"
 ShowToc: true
 TocOpen: false
 ---
 
-本文的源码在这里 --> https://github.com/tangdoou/LunarLander-RL-Comparison
+本文的源码在这里：[tangdoou/LunarLander-RL-Comparison](https://github.com/tangdoou/LunarLander-RL-Comparison)
 ## Part 1: 准备工作 —— 环境安装与测试
 我们的目标环境是 `LunarLander-v3`，一个模拟驾驶月球着陆器在无空气的月球表面安全降落的游戏。
 
@@ -302,7 +302,7 @@ if __name__ == "__main__":
 
 **结果分析**：当我们运行完600个回合，得到的奖励曲线非常典型：
 
-![DQN 训练曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/Mo4y/1000X500/image.png)
+![DQN 训练曲线](/images/posts/rlhm/dqn-training-curve.png)
 
 > 可以看出来，奖励蹦来蹦去的。即使在后期也频繁出现得分从+200骤降至-200的“灾难性遗忘”。
 >
@@ -371,7 +371,7 @@ class DoubleDQNAgent(DQNAgent):
 
 **结果分析**：用修改后的脚本训练 `DoubleDQNAgent`，得到了一条稳定得多的奖励曲线。
 
-![Double DQN 训练曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/dwaJ/1000X500/image.png)
+![Double DQN 训练曲线](/images/posts/rlhm/double-dqn-training-curve.png)
 
 > 可以看到，断崖式的下降减少了（好像也没有减少很多 TwT，理论上应该有减少）
 
@@ -435,7 +435,7 @@ class PPOAgent:
 PPO 的训练循环与 DQN 不同，它需要收集一整段轨迹（trajectory）的数据后，再进行一次集中的更新。运行 `train_ppo.py` 脚本，我们会得到一条相对平滑的性能曲线。
 因为 PPO 的训练方式和 DQN 完全不同，需要进行收集-更新的循环，所以运行的时间大大增加，比 DQN 方法慢了好几倍。
 
-![PPO 训练曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/J7YP/1000X500/image.png)
+![PPO 训练曲线](/images/posts/rlhm/ppo-training-curve.png)
 
 > 在这张图中，**蓝色的线**代表每个回合的原始奖励，可以看到它依然存在一定的波动。而**红色的线**是50个回合的移动平均奖励（50-episode moving average），它能更清晰地揭示学习的长期趋势。
 >
@@ -460,7 +460,7 @@ $$
 
 训练后，PPO-GAE的性能曲线如下：
 
-![PPO-GAE 训练曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/DYNe/1000X500/image.png)
+![PPO-GAE 训练曲线](/images/posts/rlhm/ppo-gae-training-curve.png)
 
 > **结果分析**：红色的移动平均线展示了一条非常平滑、几乎单调递增的学习轨迹。它不像DQN那样大起大落，而是在稳固的基础上，步步为营，持续优化。
 
@@ -485,10 +485,10 @@ PPO-GAE 在前 2000 回合的训练中表现出色，但其奖励曲线在末期
 经过更长时间的训练，结果不言自明。
 
 **标准 PPO (4000 回合):**
-![1000X500/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/SZH8/1000X500/image.png)
+![标准 PPO（4000 回合）训练曲线](/images/posts/rlhm/ppo-4000-training-curve.png)
 
 **PPO-GAE (4000 回合):**
-![1000X500/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/7emA/1000X500/image.png)
+![PPO-GAE（4000 回合）训练曲线](/images/posts/rlhm/ppo-gae-4000-training-curve.png)
 
 两者的最终表现差异巨大。让我们从三个阶段来深度剖析这两条曲线：
 
@@ -523,7 +523,7 @@ PPO-GAE 在前 2000 回合的训练中表现出色，但其奖励曲线在末期
 
 这里为了更加严谨的对照长期训练，我将 DDQN 的最大训练汇合改为 6000，作为对照。但是结果不尽如人意，再进行到 2200 次左右，训练的 reward 降到了-100 多，继续训练也不会有好结果了，我就暂停了训练。
 
-*![06-15_23.29.12.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/6S0L/1400X700/Google_Chrome_2025-06-15_23.29.12.png)
+![Double DQN 长期训练曲线](/images/posts/rlhm/double-dqn-long-training-log.png)
 这张图记录了一个 Double DQN 智能体从“新手”到“专家”，再到“策略崩溃”（老年痴呆）的全过程。乍一看感觉还行是吧，仔细看纵轴的比例尺就知道了。其实模型在 600-700 的 episode 表现相当不错了，从 800 往后开始崩溃。
 
 **第一阶段：学习与成长期 (0 - 约800回合)**
@@ -622,7 +622,7 @@ vec_env.close()
 ```
 运行后，SB3的评估结果能轻松达到 100+ 的平均分，和我们手写的版本差不多（甚至差一点）。
 
-![1244X468/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/kGvZ/1244X468/image.png)
+![SB3 PPO 评估输出](/images/posts/rlhm/sb3-evaluation-output.png)
 ### 5.3 为什么差距这么大？
 
 SB3 在其简洁的接口背后，集成了大量我们没有手动实现的“行业秘诀” (Tricks of the Trade)，这些是提升算法性能和稳定性的关键：
@@ -641,21 +641,20 @@ tensorboard --logdir ./logs/sb3_logs/
 ```
 就能看到SB3生成的数十种详细、专业的可视化图表，帮助我们深入分析训练的每一个细节。
 
-![TensorBoard 概览](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/WwuW/2166X4888/%E5%BE%AE%E4%BF%A1_2025-06-15_14.54.32.png)
+![TensorBoard 概览](/images/posts/rlhm/tensorboard-overview.png)
 
 **几个关键图表解读：**
 - **`rollout/ep_rew_mean(平均回合奖励)`**: 
 	- 曲线从负值（大约 -150）开始，这表示在训练初期，智能体完全不知道如何降落，几乎每次都坠毁，因此受到惩罚（负奖励）。
 	- 随着训练步数（Step）的增加，曲线稳步上升，最终在 200 分以上达到平稳。这清晰地表明，智能体通过学习，策略不断优化，逐渐掌握了安全、精准降落的技巧，从而获得了很高的正奖励。
-	![平均奖励曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/Wg3h/2130X932/image.png)
+	![平均奖励曲线](/images/posts/rlhm/average-reward-curve.png)
 
 - **`rollout/ep_len_mean(平均回合长度)`**: 
 	- 曲线一开始比较短，然后迅速增长并趋于平稳。在月球降落任务中，过早结束通常意味着坠毁。
 	- 曲线的增长说明智能体学会了如何通过控制推进器在空中停留更长的时间，以便更好地调整姿态和速度，最终实现成功降落，而不是很快就掉下去。
-	![损失函数曲线](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/aEyX/2150X946/image.png)
+	![平均回合长度曲线](/images/posts/rlhm/episode-length-curve.png)
 
 - **`time/fps(每秒帧数)`**: 
 	- 这个值主要反映了你的**计算性能**或**训练速度**。数值越高，训练得越快。
 	- 图中的曲线在短暂的初始波动后稳定在 3300 左右，说明训练速度是相当稳定的。
-	![可解释方差](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250615/GDue/2116X1066/image.png)
-
+	![训练速度曲线](/images/posts/rlhm/fps-curve.png)

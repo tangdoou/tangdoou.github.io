@@ -1,12 +1,12 @@
 ---
-title: "十分钟上手 MCP "
+title: "十分钟上手 MCP"
 date: 2025-06-12T10:00:00+08:00 
 draft: false # 设置为 false 来发布，true 则为草稿，不会显示在最终网站上
 authors: ["唐豆"] # 作者
 tags: ["分享", "MCP"] # 标签
 categories: ["学习"] 
 math: true
-summary: "无" 
+summary: "面向新手的 MCP 入门实践，介绍 Claude Desktop 和 Cherry Studio 两种上手方式。"
 
 ShowToc: true
 TocOpen: false 
@@ -30,7 +30,7 @@ Claude 作为 MCP 规则的提出者和制定者，其客户端对 MCP 的支持
 
 [https://www.claude.ai/apps](https://www.claude.ai/apps)
 
-![Claude 官网下载页面](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/IxWy/3306X1984/image.png)
+![Claude 官网下载页面](/images/posts/mcp02/claude-download-page.png)
 
 #### 2. 登录 Claude 账号
 
@@ -44,18 +44,18 @@ Claude 作为 MCP 规则的提出者和制定者，其客户端对 MCP 的支持
 
 你可以在这里找到许多社区贡献的 MCP 工具，可以先从首页推荐的开始玩起。
 
-![Smithery.ai 首页](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/69Gf/3282X1970/image.png)
+![Smithery.ai 首页](/images/posts/mcp02/smithery-home.png)
 
 推荐“谷歌学术”的 MCP ，点击进入详情页。
 
-![谷歌学术 MCP 详情页](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/6BnO/2982X1964/image.png)
+![谷歌学术 MCP 详情页](/images/posts/mcp02/smithery-google-scholar.png)
 
 #### 4. 获取并运行安装命令
 
 在 MCP 详情页右侧，点击 `Claude Desktop` 按钮，复制弹出的命令。
 
 
-![3008X1972/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/usQd/3008X1972/image.png)
+![Claude Desktop 安装命令](/images/posts/mcp02/claude-install-command.png)
 
 然后打开你电脑的**终端**（Windows 用户是 PowerShell 或 CMD，macOS 用户是 Terminal），粘贴刚刚复制的命令并回车运行。这个过程 Claude 客户端不需要做任何操作，贼方便。
 
@@ -63,13 +63,13 @@ Claude 作为 MCP 规则的提出者和制定者，其客户端对 MCP 的支持
 
 命令运行成功后，**完全退出并重启 Claude 客户端**。然后打开设置（Settings），你就能看到 MCP 服务已经成功加载了。
 
-![设置中看到已加载的 MCP](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/DydA/1584X1120/image.png)
+![设置中看到已加载的 MCP](/images/posts/mcp02/claude-settings-mcp.png)
 
 #### 6. 如何使用
 
 在 Claude 的对话输入框下方，就可以看到并选择已启用的 MCP 工具了。
 
-![在对话框中使用 MCP](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/sgmP/2000X1600/image.png)
+![在对话框中使用 MCP](/images/posts/mcp02/claude-chat-mcp.png)
 
 至此，使用 Claude 客户端的流程就全部完成了。整个过程非常简单，唯一的门槛在于 Claude 账号的注册。
 
@@ -81,11 +81,11 @@ Claude 作为 MCP 规则的提出者和制定者，其客户端对 MCP 的支持
 
 然后，打开魔搭社区的 MCP 广场：[https://www.modelscope.cn/mcp](https://www.modelscope.cn/mcp)
 
-![魔搭 MCP 广场](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/MqJp/3456X2158/Microsoft_Edge_2025-06-12_12.38.42.png)
+![魔搭 MCP 广场](/images/posts/mcp02/modelscope-mcp-plaza.png)
 
 登录后，找一个你感兴趣的 MCP 点进去，比如“高德地图”
 
-![高德地图 MCP](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/OPWw/3250X1906/image.png)
+![高德地图 MCP](/images/posts/mcp02/amap-mcp.png)
 
 关于具体的配置步骤，魔搭社区和 Cherry Studio 官方已经提供了非常详尽的教程。为了避免重复造轮子，这里直接推荐大家参考官方文档，写得比我好（写一半才想起来）。
 
@@ -93,7 +93,7 @@ Claude 作为 MCP 规则的提出者和制定者，其客户端对 MCP 的支持
 
 这里放一张使用的案例吧，是用高德的导航，从暨大本部到番禺的驾车路线
 
-![3456X2158/image.png](https://tc.z.wiki/autoupload/EPCrGlomy_dW_TeigVD2VjbX6Z0L9jPJG2fnSMjU_pGyl5f0KlZfm6UsKj-HyTuv/20250612/sG29/3456X2158/image.png)
+![Cherry Studio 高德导航案例](/images/posts/mcp02/cherry-studio-route-demo.png)
 
 另外使用 Cherry Studio 调用 MCP 挺慢的，要比 Claude 慢很多。
 

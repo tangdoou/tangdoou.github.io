@@ -1,7 +1,8 @@
 ---
 title: "我的第一篇笔记"
-date: 2004-05-24T01:25:00+08:00
+date: 2025-05-24T01:25:00+08:00
 draft: false # 设置为 false 才会发布
+summary: "记录这个 Hugo 博客搭建完成后的第一篇测试笔记。"
 tags: ["hugo", "学习", "博客"]
 categories: ["技术笔记"]
 

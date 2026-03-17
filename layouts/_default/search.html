@@ -1,0 +1,121 @@
+{{ define "main" }}
+{{ $searchPages := where site.RegularPages "Section" "posts" }}
+{{ $index := slice }}
+{{ range $searchPages }}
+  {{ $index = $index | append (dict
+    "title" .Title
+    "permalink" .RelPermalink
+    "date" (.Date.Format "2006-01-02")
+    "summary" (.Summary | plainify)
+    "content" (replaceRE "\\s+" " " (.Plain | plainify))
+    "tags" (delimit (.Params.tags | default (slice)) "、")
+  ) }}
+{{ end }}
+<article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">{{ .Title }}</h1>
+    {{ with .Summary }}
+    <p class="opacity-70">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <section>
+    <input
+      id="search-input"
+      type="search"
+      placeholder="{{ .Params.placeholder | default "输入关键词开始搜索..." }}"
+      aria-label="搜索文章"
+      style="width: 100%; padding: 0.9rem 1rem; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 0.9rem; background: transparent;"
+    />
+    <p id="search-status" class="opacity-70" style="margin-top: 0.9rem;"></p>
+    <ul id="search-results" style="list-style: none; padding-left: 0; margin-top: 1.5rem;"></ul>
+  </section>
+</article>
+
+<script id="search-index" type="application/json">{{ $index | jsonify | safeHTML }}</script>
+<script>
+  (function () {
+    const input = document.getElementById('search-input');
+    const status = document.getElementById('search-status');
+    const results = document.getElementById('search-results');
+    const rawIndex = document.getElementById('search-index').textContent;
+    const parsedIndex = JSON.parse(rawIndex);
+    const pages = typeof parsedIndex === 'string' ? JSON.parse(parsedIndex) : parsedIndex;
+
+    function createResultItem(page) {
+      const item = document.createElement('li');
+      item.style.marginBottom = '1rem';
+      item.style.padding = '1rem 1.1rem';
+      item.style.border = '1px solid rgba(0, 0, 0, 0.08)';
+      item.style.borderRadius = '0.9rem';
+
+      const title = document.createElement('a');
+      title.href = page.permalink;
+      title.textContent = page.title;
+      title.style.fontWeight = '600';
+      title.style.textDecoration = 'none';
+
+      const meta = document.createElement('div');
+      meta.textContent = page.date + (page.tags ? ' · ' + page.tags : '');
+      meta.style.marginTop = '0.35rem';
+      meta.style.fontSize = '0.92rem';
+      meta.style.opacity = '0.7';
+
+      const summary = document.createElement('p');
+      const previewText =
+        page.summary && page.summary !== '无'
+          ? page.summary
+          : page.content.slice(0, 120) + '...';
+      summary.textContent = previewText;
+      summary.style.margin = '0.75rem 0 0';
+
+      item.appendChild(title);
+      item.appendChild(meta);
+      item.appendChild(summary);
+      return item;
+    }
+
+    function render(items, query) {
+      results.innerHTML = '';
+
+      if (!query) {
+        status.textContent = '先给你展示最近的文章，也可以直接输入关键词搜索。';
+      } else if (items.length === 0) {
+        status.textContent = '没有找到相关结果，换个关键词试试看。';
+      } else {
+        status.textContent = '找到 ' + items.length + ' 篇相关文章。';
+      }
+
+      const renderItems = query ? items : items.slice(0, 8);
+
+      renderItems.forEach(function (page) {
+        results.appendChild(createResultItem(page));
+      });
+    }
+
+    function search(query) {
+      const normalized = query.trim().toLowerCase();
+
+      if (!normalized) {
+        render(pages, '');
+        return;
+      }
+
+      const matches = pages.filter(function (page) {
+        return [page.title, page.summary, page.content, page.tags]
+          .join(' ')
+          .toLowerCase()
+          .includes(normalized);
+      });
+
+      render(matches, normalized);
+    }
+
+    input.addEventListener('input', function (event) {
+      search(event.target.value);
+    });
+
+    search('');
+  })();
+</script>
+{{ end }}
